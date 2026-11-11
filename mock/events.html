@@ -61,22 +61,22 @@ const upcoming=EVENTS.filter(e=>new Date(e.date)>=new Date(today.toDateString())
 let view=new Date((upcoming[0]||EVENTS[0]).date+'T12:00:00');view.setDate(1);
 
 document.getElementById('featured').innerHTML=['speed','first-friday','bf'].map(k=>EVENTS.filter(e=>e.key===k&&e.date>=today.toISOString().slice(0,10))[0]||EVENTS.find(e=>e.key===k)).map(e=>`
-<article class="card"><div class="thumb ${e.thumb}">${e.icon}</div><div class="body">${badge(e)}<h3>${e.title}</h3>
+<article class="card"><div class="thumb ${e.thumb}${e.img?' photo':''}" ${thumbBg(e)}>${e.icon}</div><div class="body">${badge(e)}<h3>${e.title}</h3>
 <div class="meta"><span>📅 ${fmt(e.date,{weekday:'short',month:'short',day:'numeric'})}${e.end?' – '+fmt(e.end,{day:'numeric'}):''}</span><span>🕒 ${e.time}</span><span>📍 ${e.place}</span></div>
 <p>${e.desc}</p><button class="btn btn-green" onclick="openEv(${e.id})">Details</button></div></article>`).join('');
 
 function openEv(id){const e=EVENTS.find(x=>x.id===id),d=document.getElementById('dlg');
- d.innerHTML=`<div class="thumb ${e.thumb}">${e.icon}</div><div class="inner">${badge(e)}<h3>${e.title}</h3>
+ d.innerHTML=`<div class="thumb ${e.thumb}${e.img?' photo':''}" ${thumbBg(e)}>${e.icon}</div><div class="inner">${badge(e)}<h3>${e.title}</h3>
  <div class="meta"><span>📅 ${fmt(e.date,{weekday:'long',month:'long',day:'numeric',year:'numeric'})}${e.end?' – '+fmt(e.end,{month:'long',day:'numeric'}):''}</span><span>🕒 ${e.time}</span><span>📍 ${e.place}</span>${e.series?`<span>🔁 ${e.series} · ${SEASONS[e.season]||'Year-round'}</span>`:''}</div>
- <p>${e.desc}</p><div style="display:flex;gap:10px;flex-wrap:wrap">${e.bf?'<a class="btn btn-primary" href="balloon-fest.html">Festival site</a>':''}<button class="btn btn-ghost" style="color:var(--green)" onclick="dlg.close()">Close</button></div>
+ <p>${e.desc}</p><div style="display:flex;gap:10px;flex-wrap:wrap">${e.bf?`<a class="btn btn-primary" href="${TICKETS}">🎟️ Buy Tickets</a><a class="btn btn-green" href="balloon-fest.html">Festival site</a>`:''}<button class="btn btn-ghost" style="color:var(--green)" onclick="dlg.close()">Close</button></div>
  ${reviewsHTML(e)}</div>`;
  d.insertAdjacentHTML('afterbegin','<button class="x" aria-label="Close" onclick="dlg.close()">✕</button>');
  d.dataset.tone=e.thumb;d.showModal();d.scrollTop=0}
 
 /* Sample reviews from past editions (placeholders). Photos are gradient tiles; real uploads show as images. */
 const REVIEWS={
- bf:[{n:'Sarah K.',y:2025,s:5,t:'Watching the dawn launch from the green was magical. Arrive early and bring a blanket!',p:['🎈','🌅','👨‍👩‍👧']},
-    {n:'Mike D.',y:2024,s:4,t:'Great food and music. Parking was a bit of a walk, but worth it for the view.',p:['🎶']}],
+ bf:[{n:'Sarah K.',y:2025,s:5,t:'Watching the dawn launch from the green was magical. Arrive early and bring a blanket!',p:['img/qbf-a.jpg','img/qbf-b.jpg','img/qbf-d.jpg']},
+    {n:'Mike D.',y:2024,s:4,t:'Great food and music. Parking was a bit of a walk, but worth it for the view.',p:['img/balloon-fest-1.jpg']}],
  'first-friday':[{n:'Priya R.',y:2025,s:5,t:'Gallery hopping and live music all night. Such a fun downtown vibe.',p:['🎨','🎶']}],
  foliage:[{n:'Tom B.',y:2025,s:5,t:'Gorgeous colors and I found a handmade gift at the pop-up shop.',p:['🍂']}],
  gory:[{n:'Elena M.',y:2025,s:4,t:'The parade was wild and so creative. Dress up and bring the kids early for trunk or treat!',p:['🎃','🥁']}]
@@ -87,7 +87,7 @@ function reviewsHTML(e){
  const list=[...(REVIEWS[e.key]||[]),...(userRv[e.id]||[])];
  const avg=list.length?(list.reduce((a,r)=>a+r.s,0)/list.length).toFixed(1):null;
  const card=r=>`<div class="rv"><div><span class="stars">${'★'.repeat(r.s)}${'☆'.repeat(5-r.s)}</span> <b>${r.n}</b> <small>· ${r.y}</small></div><p>${r.t}</p>
-  ${r.p&&r.p.length?`<div class="rv-photos">${r.p.map(p=>p.startsWith('blob:')?`<img src="${p}" alt="Visitor photo">`:`<span class="${e.thumb}">${p}</span>`).join('')}</div>`:''}</div>`;
+  ${r.p&&r.p.length?`<div class="rv-photos">${r.p.map(p=>(p.startsWith('blob:')||p.startsWith('img/'))?`<img src="${p}" alt="Visitor photo">`:`<span class="${e.thumb}">${p}</span>`).join('')}</div>`:''}</div>`;
  return `<div class="rv-head"><div><h4>From past years</h4>${avg?`<span class="stars">★</span> <b>${avg}</b> <small>(${list.length} review${list.length>1?'s':''})</small>`:'<small>No reviews yet. Be the first!</small>'}</div>
   <button class="btn btn-green" style="padding:8px 16px" onclick="this.closest('dialog').querySelector('.rvform').classList.toggle('show')">Share your experience</button></div>
  <form class="rvform" onsubmit="addRv(event,${e.id})">

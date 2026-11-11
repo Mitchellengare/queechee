@@ -4,21 +4,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="styles.css">
-<style>.bf-hero{background:linear-gradient(180deg,rgba(20,52,39,.2),rgba(20,52,39,.85)),linear-gradient(160deg,#f4a261,#e8702a 40%,#2f6f9f);color:#fff;padding:100px 0 80px;text-align:center}
-.bf-hero h1{color:#fff}.bf-hero .count{justify-content:center;margin:28px 0}.bf-hero .count b{font-size:2.6rem}.bf-hero .count div{min-width:92px;padding:14px}</style></head><body>
+<style>.bf-hero{background:linear-gradient(180deg,rgba(20,52,39,.25),rgba(20,52,39,.8)),url(img/qbf-d.jpg) center/cover;color:#fff;padding:110px 0 90px;text-align:center}
+.bf-hero h1{color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.35)}.bf-hero .count{justify-content:center;margin:28px 0}.bf-hero .count b{font-size:2.6rem}.bf-hero .count div{min-width:92px;padding:14px;backdrop-filter:blur(6px)}
+.bf-hero .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.quote{font:600 1.4rem var(--font-h);color:var(--green-d);max-width:30ch;margin:0 auto;text-align:center}.quote small{display:block;font:500 .9rem var(--font-b);color:var(--muted);margin-top:8px}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-top:14px}summary{cursor:pointer;font-weight:600}details p{margin-top:8px;color:var(--muted);font-size:.95rem}
+.sponsors{display:flex;gap:40px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:24px}.sponsors img{height:70px;object-fit:contain}
+.contact{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:18px}</style></head><body>
 <main id="main">
 <section class="bf-hero"><div class="wrap">
   <p class="eyebrow" style="color:#fff3e6">46th Annual · Father's Day weekend</p>
   <h1>Quechee Hot Air Balloon Festival</h1>
   <p style="font-size:1.2rem;margin-top:12px">New England's most colorful Father's Day tradition for more than 45 years.</p>
   <div class="count" aria-label="Countdown to the next festival"></div>
-  <p style="opacity:.9;margin-bottom:22px">Balloon launches at 6:00 AM &amp; 6:00 PM (weather permitting) · 2027 dates shown are placeholders</p>
-  <a class="btn btn-primary" href="#tickets">Buy Tickets</a> <a class="btn btn-ghost" href="#info">Plan your ascent</a>
+  <div class="actions"><a class="btn btn-primary btn-lg" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">🎟️ Buy Tickets</a><a class="btn btn-ghost btn-lg" style="box-shadow:none" href="#info">Plan your ascent</a></div>
+  <p style="opacity:.9;margin-top:18px;font-size:.9rem">Balloon launches 6:00 AM &amp; 6:00 PM, weather permitting · 2027 dates are placeholders until announced</p>
 </div></section>
 
 <section><div class="wrap">
-  <div class="center"><p class="eyebrow">Hosted by the Chamber</p><h2>Plan Your Ascent</h2><p class="lead">Hot air balloons, live music, family-friendly shows, food vendors and unforgettable views under blue Vermont skies. “No better view of the beautiful Vermont countryside.” — Yankee Magazine</p></div>
-  <div class="grid g4" style="margin-top:32px">
+  <div class="center"><p class="eyebrow">Hosted by the Chamber</p><h2>Plan Your Ascent</h2><p class="lead">Hot air balloons, live music, family-friendly shows, food vendors and unforgettable views under blue Vermont skies.</p></div>
+  <p class="quote" style="margin-top:30px">“There is no better view of the beautiful Vermont countryside.”<small>— Yankee Magazine</small></p>
+  <div class="grid g4" style="margin-top:36px">
     <a class="perk" href="#tickets" style="text-decoration:none"><div class="ico">🎟️</div><h3>Tickets</h3><p>Weekend passes and adventure rides.</p></a>
     <a class="perk" href="#info" style="text-decoration:none"><div class="ico">🗓️</div><h3>Schedule</h3><p>Hours for all three days.</p></a>
     <a class="perk" href="#info" style="text-decoration:none"><div class="ico">📍</div><h3>Getting Here</h3><p>Village Green, Quechee.</p></a>
@@ -27,37 +33,74 @@
 </div></section>
 
 <section class="alt" id="tickets"><div class="wrap">
-  <h2>Tickets</h2>
-  <div class="grid g2" style="margin-top:20px">
-    <div class="perk"><div class="ico">🎪</div><h3>Weekend Passes</h3><p>Full festival access all weekend. Advance online purchase is discounted. Children under 12 get discounted admission.</p></div>
-    <div class="perk"><div class="ico">🎈</div><h3>Adventure Ride Tickets</h3><p>Limited and tend to sell out quickly. Released in waves, so sign up for updates.</p></div>
+  <div class="center"><p class="eyebrow">Tickets</p><h2>Choose your adventure</h2><p class="lead">Tickets are sold in advance online. Advance pricing is discounted.</p></div>
+  <div class="grid g2" style="margin-top:32px">
+    <div class="ticket-card best"><div class="photo-top" style="background-image:url(img/qbf-c.jpg)"><span class="tag">Most popular</span></div>
+      <div class="body"><h3>🎪 Weekend Pass</h3>
+      <ul><li>Full festival access all weekend long</li><li>Discounted when bought online in advance</li><li>Children under 12 get discounted admission</li></ul>
+      <a class="btn btn-primary btn-lg" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">Buy Weekend Pass</a></div></div>
+    <div class="ticket-card"><div class="photo-top" style="background-image:url(img/qbf-a.jpg)"><span class="tag">Limited</span></div>
+      <div class="body"><h3>🎈 Adventure Ride</h3>
+      <ul><li>Go up in a hot air balloon</li><li>Limited and tend to sell out quickly</li><li>Released in waves, so you get multiple chances</li></ul>
+      <a class="btn btn-primary btn-lg" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">Book a Ride</a></div></div>
   </div>
-  <p style="margin-top:18px;color:var(--muted)"><b>Why no day passes?</b> The grounds are open rain or shine and launches depend on weather. Youth in foster care and participating schools receive passes.</p>
-  <p style="margin-top:20px"><a class="btn btn-primary" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">Buy Tickets</a>
-  <a class="btn btn-green" href="#">Get ticket-drop alerts</a></p>
+  <details><summary>Why don't you sell day passes?</summary><p>The grounds are open rain or shine, but launches depend on safe weather. A weekend pass lets you come on multiple days, which gives you more chances to see balloons fly, and keeps prices accessible. Ticket prices haven't changed in years.</p></details>
+  <details><summary>Free and discounted passes</summary><p>Passes are offered to local youth in foster care and participating schools. Children under 12 are eligible for discounted admission.</p></details>
+  <p class="center" style="margin-top:22px;color:var(--muted)">2027 tickets not out yet? <a href="#alerts" style="color:var(--orange-d);font-weight:600">Get a text when they drop.</a></p>
+</div></section>
+
+<section id="gallery"><div class="wrap">
+  <div class="center"><p class="eyebrow">Relive the magic</p><h2>More than 45 years of balloon-filled skies</h2></div>
+  <div class="gallery" style="margin-top:28px">
+    <img src="img/qbf-b.jpg" alt="Balloons inflating on the Village Green" loading="lazy">
+    <img src="img/qbf-a.jpg" alt="Evening glow as balloons light up" loading="lazy">
+    <img src="img/balloon-fest-1.jpg" alt="Crowds enjoying the festival" loading="lazy">
+    <img src="img/qbf-d.jpg" alt="Balloons reflected in the river by the dam" loading="lazy">
+    <img src="img/balloons-2.jpg" alt="Balloons above the festival parking field" loading="lazy">
+  </div>
+</div></section>
+
+<section class="alt" id="alerts"><div class="wrap split">
+  <div><p class="eyebrow">Live launch updates</p><h2>Never miss a launch</h2><p class="lead" style="margin-top:10px">Launches depend on the weather. Get a text when balloons are flying, and when 2027 tickets go on sale.</p></div>
+  <form onsubmit="event.preventDefault();this.innerHTML='<h3>You are on the list. Thank you!</h3>'">
+    <input placeholder="First name" aria-label="First name" required><input type="tel" placeholder="Cell phone number" aria-label="Cell phone" required>
+    <button class="btn btn-primary">Sign up for text alerts</button>
+    <small style="color:var(--muted)">By signing up you consent to receive text messages from the Hartford Area Chamber of Commerce. Msg/data rates may apply. Reply STOP to opt out.</small>
+  </form>
 </div></section>
 
 <section id="info"><div class="wrap">
   <h2>Festival Information</h2>
   <div class="grid g2" style="margin-top:20px">
     <div>
-      <table class="sched"><tr><th>Day</th><th>Hours</th></tr>
+      <table class="sched"><tr><th>Day</th><th>2026 hours (2027 TBA)</th></tr>
       <tr><td>Friday</td><td>3:00 PM – 9:00 PM</td></tr><tr><td>Saturday</td><td>5:45 AM – 9:00 PM</td></tr><tr><td>Sunday</td><td>5:45 AM – 8:00 PM</td></tr></table>
       <p style="margin:16px 0"><b>Where:</b> Village Green, Quechee, VT 05059</p>
       <h3 style="margin-bottom:10px">Festival rules</h3>
-      <div class="rules"><span class="rule">🐕 No pets (service animals welcome)</span><span class="rule">🍺 No outside alcohol</span><span class="rule">🛸 No drones</span></div>
+      <div class="rules"><span class="rule">🐕 No pets (service animals welcome)</span><span class="rule">🍺 No outside alcohol (beer/wine tent on site)</span><span class="rule">🛸 No drones</span></div>
     </div>
     <div id="map" class="map"></div>
   </div>
 </div></section>
 
 <section class="dark" id="involved"><div class="wrap center"><h2>Be Part of the Tradition</h2><p class="lead" style="color:#cfe2d8">Sponsor, volunteer or become a vendor.</p>
-<p style="margin-top:22px"><a class="btn btn-primary" href="#">Sponsor</a> <a class="btn btn-ghost" style="color:#fff" href="#">Volunteer</a> <a class="btn btn-ghost" style="color:#fff" href="#">Become a vendor</a></p></div></section>
+<p style="margin-top:22px"><a class="btn btn-primary" href="#">Sponsor</a> <a class="btn btn-ghost" style="color:#fff" href="#">Volunteer</a> <a class="btn btn-ghost" style="color:#fff" href="#">Become a vendor</a></p>
+<h3 style="color:#fff;margin-top:48px;font-size:1rem;letter-spacing:.12em;text-transform:uppercase">Thank you to our sponsors</h3>
+<div class="sponsors" style="background:#fff;border-radius:14px;padding:20px;max-width:560px;margin:16px auto 0"><img src="img/sponsor-jack.png" alt="Presenting sponsor"><img src="img/sponsor-vtc.png" alt="Platinum sponsor"></div>
+<div class="contact"><span>📞 802-295-7900</span><span>✉️ info@hartfordvtchamber.com</span><span>Managed by the <a href="index.html" style="text-decoration:underline">Hartford Area Chamber of Commerce</a></span></div>
+</div></section>
 </main>
+
+<div class="ticketbar" id="tbar"><div class="wrap"><div><b>🎈 Quechee Balloon Festival</b><small>Weekend passes &amp; adventure rides</small></div><a class="btn btn-primary" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">🎟️ Buy Tickets</a></div></div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="app.js"></script>
 <script>
 const m=L.map('map',{scrollWheelZoom:false}).setView([43.6469,-72.4173],14);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors'}).addTo(m);
 L.marker([43.6469,-72.4173]).addTo(m).bindPopup('<b>Quechee Village Green</b><br>Balloon Festival grounds (approx.)').openPopup();
+/* sticky ticket bar: appears after the hero, hides while the tickets section is on screen */
+const bar=document.getElementById('tbar'),hero=document.querySelector('.bf-hero'),tk=document.getElementById('tickets');
+function bt(){const y=scrollY+innerHeight,hh=hero.getBoundingClientRect().bottom<0,r=tk.getBoundingClientRect(),inTk=r.top<innerHeight*.7&&r.bottom>innerHeight*.3;bar.classList.toggle('show',hh&&!inTk)}
+addEventListener('scroll',bt,{passive:true});bt();
 </script></body></html>

@@ -12,10 +12,10 @@
 </div></section>
 
 <!-- Balloon fest is the top revenue driver, so it gets a prominent band with live countdown -->
-<div class="bf-band"><div class="wrap">
+<div class="bf-band photo" style="--bg:url(img/balloon-fest-1.jpg)"><div class="wrap">
   <div><p class="eyebrow" style="color:#fff3e6">🎈 Our signature event</p><h2>Quechee Balloon Festival</h2><p>Father's Day weekend · Village Green, Quechee</p></div>
   <div class="count" aria-label="Countdown to next festival"></div>
-  <a class="btn btn-ghost" style="color:#fff" href="balloon-fest.html">Take Flight →</a>
+  <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-ghost" style="color:#fff;background:rgba(0,0,0,.15)" href="balloon-fest.html">Take Flight →</a><a class="btn btn-lg" style="background:#fff;color:var(--orange-d)" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">🎟️ Buy Tickets</a></div>
 </div></div>
 
 <section><div class="wrap">
@@ -28,7 +28,7 @@
   <div><p class="eyebrow">Visit &amp; Explore</p><h2>Quechee Gorge Visitor Center</h2>
     <p class="lead" style="margin:12px 0 20px">Your gateway to exploring Vermont's deepest gorge. The center welcomes more than 100,000 visitors each year. Open daily 9:00 AM–5:00 PM.</p>
     <a class="btn btn-green" href="visit.html">Plan Your Visit</a></div>
-  <div class="panel t-gorge">🏞️</div>
+  <div class="panel photo t-gorge" style="background-image:url(img/autumn.jpg)" role="img" aria-label="Quechee Gorge Visitor Center in fall">🏞️</div>
 </div></section>
 
 <section><div class="wrap">
@@ -53,7 +53,7 @@
 <script src="app.js"></script>
 <script>
 document.getElementById('feat').innerHTML=['speed','first-friday','bf'].map(k=>EVENTS.filter(e=>e.key===k&&e.date>=new Date().toISOString().slice(0,10))[0]||EVENTS.find(e=>e.key===k)).map(e=>`
-<article class="card"><div class="thumb ${e.thumb}">${e.icon}${''}</div>
+<article class="card"><div class="thumb ${e.thumb}${e.img?' photo':''}" ${thumbBg(e)}>${e.icon}</div>
 <div class="body">${badge(e)}<h3>${e.title}</h3>
 <div class="meta"><span>📅 ${fmt(e.date,{month:'long',day:'numeric',year:'numeric'})}${e.end?' – '+fmt(e.end,{day:'numeric'}):''}</span><span>🕒 ${e.time}</span><span>📍 ${e.place}</span></div>
 <a class="btn btn-green" href="${e.bf?'balloon-fest.html':'events.html'}">Details</a></div></article>`).join('');
