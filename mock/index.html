@@ -2,7 +2,7 @@
 <title>Hartford Area Chamber of Commerce</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=23"></head><body>
+<link rel="stylesheet" href="styles.css?v=28"></head><body>
 <main id="main">
 <section class="hero"><div class="wrap">
   <p class="eyebrow" style="color:#ffd2b0">Quechee · White River Junction · Hartford Village · West Hartford · Wilder</p>
@@ -52,7 +52,7 @@
   </div>
 </div></section>
 </main>
-<script src="app.js?v=23"></script>
+<script src="app.js?v=24"></script>
 <script>
 document.getElementById('feat').innerHTML=['speed','first-friday','pentangle'].map(k=>EVENTS.filter(e=>e.key===k&&e.date>=new Date().toISOString().slice(0,10))[0]||EVENTS.find(e=>e.key===k)).map(e=>`
 <article class="card"><div class="thumb ${e.thumb}${e.img?' photo':''}" ${thumbBg(e)}>${e.icon}</div>

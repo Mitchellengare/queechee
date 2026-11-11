@@ -87,20 +87,23 @@ function openTickets(){
   if(!d){d=document.createElement('dialog');d.id='tix';d.dataset.tone='t-sky';document.body.appendChild(d);
     d.addEventListener('click',e=>{if(e.target===d)d.close()})}
   const alerts=isBF?'#alerts':'balloon-fest.html#alerts';
+  const SPONSOR='https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/items/708093/?full-items=yes&flow=1575107';
+  const OPTS=[
+    ['🎪','Quechee Balloon Festival Admission','46th Annual! All ages welcome!','Buy',TICKETS,true],
+    ['🎈','Hot Air Balloon Adventure Ride','Get ready to soar at the Quechee Balloon Festival!','Select date',TICKETS],
+    ['🧘','Sunrise Yoga','Yoga while the sun rises and the pilots fill their balloons!','Select date',TICKETS],
+    ['🚲','Balloon Festival E-Bike Ride','Starting at $129 · Self-guided e-bike adventure to visit a fourth-generation maple farm.','View',TICKETS],
+    ['🎟️','Balloon Ride Raffle','Your chance to win a trip to the skies.','Buy',TICKETS],
+    ['🤝','Volunteer, Vendor & Sponsor Registration','Be part of the tradition.','View',SPONSOR]
+  ];
   d.innerHTML=`<button class="x" aria-label="Close" onclick="document.getElementById('tix').close()">✕</button>
-  <div class="thumb photo" style="background-image:url(img/qbf-c.jpg);height:150px"></div>
+  <div class="thumb photo" style="background-image:url(img/qbf-c.jpg);height:110px"></div>
   <div class="inner">
-    <span class="badge b-chamber">Hosted by the Chamber</span>
-    <h3>Quechee Balloon Festival tickets</h3>
-    <div class="grid" style="gap:10px">
-      <div class="rv" style="border:2px solid var(--orange);background:#fff"><b>🎪 Weekend Pass</b><p>Full festival access all weekend. Discounted when you buy online in advance. Children under 12 get discounted admission.</p></div>
-      <div class="rv" style="background:#fff;border:2px solid var(--line)"><b>🎈 Adventure Ride</b><p>Go up in a hot air balloon. Limited, and they sell out quickly. Released in waves.</p></div>
-    </div>
-    <small style="color:var(--muted)">2027 dates and prices aren't announced yet. Checkout opens on the Chamber's secure FareHarbor booking page.</small>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <a class="btn btn-primary" data-direct="1" target="_blank" rel="noopener" href="${TICKETS}">Continue to checkout</a>
-      <a class="btn btn-ghost" style="color:var(--green)" href="${alerts}" onclick="document.getElementById('tix').close()">Get text alerts</a>
-    </div>
+    <span class="badge b-chamber">★ Hosted by the Chamber</span>
+    <h3>Quechee Balloon Festival · Book online</h3>
+    <div class="opts">${OPTS.map(o=>`<div class="opt${o[5]?' main':''}"><span class="oi" aria-hidden="true">${o[0]}</span><span><b>${o[1]}</b><small>${o[2]}</small></span><a class="btn ${o[5]?'btn-primary':'btn-green'}" data-direct="1" target="_blank" rel="noopener" href="${o[4]}" aria-label="${o[3]}: ${o[1]}">${o[3]}</a></div>`).join('')}</div>
+    <small style="color:var(--muted)">All prices in US dollars. Booking opens on the Chamber's secure FareHarbor page. 2027 dates and prices aren't announced yet.</small>
+    <a class="btn btn-ghost" style="color:var(--green);align-self:flex-start" href="${alerts}" onclick="document.getElementById('tix').close()">Get text alerts when tickets drop</a>
   </div>`;
   d.showModal();d.scrollTop=0;
 }

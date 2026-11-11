@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link rel="stylesheet" href="styles.css?v=23">
+<link rel="stylesheet" href="styles.css?v=28">
 <style>.bf-hero{background:linear-gradient(180deg,rgba(20,52,39,.25),rgba(20,52,39,.8)),url(img/qbf-d.jpg) center/cover;color:#fff;padding:110px 0 90px;text-align:center}
 .bf-hero h1{color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.35)}.bf-hero .count{justify-content:center;margin:28px 0}.bf-hero .count b{font-size:2.6rem}.bf-hero .count div{min-width:92px;padding:14px;backdrop-filter:blur(6px)}
 .bf-hero .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
@@ -34,19 +34,23 @@ details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:
 
 <section class="alt" id="tickets" data-label="Tickets"><div class="wrap">
   <div class="center"><p class="eyebrow">Tickets</p><h2>Choose your adventure</h2></div>
-  <div class="grid g2" style="margin-top:32px">
+  <div class="grid g2" style="margin-top:18px">
     <div class="ticket-card best"><div class="photo-top" style="background-image:url(img/qbf-c.jpg)"><span class="tag">Most popular</span></div>
-      <div class="body"><h3>🎪 Weekend Pass</h3>
+      <div class="body"><h3>🎪 Festival Admission</h3>
       <ul><li>Full festival access all weekend long</li><li>Discounted when bought online in advance</li><li>Children under 12 get discounted admission</li></ul>
-      <a class="btn btn-primary btn-lg" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">Buy Weekend Pass</a></div></div>
+      <a class="btn btn-primary btn-lg" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">Buy Admission</a></div></div>
     <div class="ticket-card"><div class="photo-top" style="background-image:url(img/qbf-a.jpg)"><span class="tag">Limited</span></div>
       <div class="body"><h3>🎈 Adventure Ride</h3>
       <ul><li>Go up in a hot air balloon</li><li>Limited and tend to sell out quickly</li><li>Released in waves, so you get multiple chances</li></ul>
       <a class="btn btn-primary btn-lg" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">Book a Ride</a></div></div>
   </div>
-  <div class="grid g2" style="gap:14px;margin-top:6px"><details><summary>Why don't you sell day passes?</summary><p>The grounds are open rain or shine, but launches depend on safe weather. A weekend pass lets you come on multiple days, which gives you more chances to see balloons fly, and keeps prices accessible. Ticket prices haven't changed in years.</p></details>
-  <details><summary>Free and discounted passes</summary><p>Passes are offered to local youth in foster care and participating schools. Children under 12 are eligible for discounted admission.</p></details></div>
-  <p class="center" style="margin-top:12px;color:var(--muted)">2027 tickets not out yet? <a href="#alerts" style="color:var(--orange-d);font-weight:600">Get a text when they drop.</a></p>
+  <div class="grid g3 more-tiles" style="margin-top:14px">
+    <a class="tile" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675"><span class="oi">🧘</span><span><b>Sunrise Yoga</b><small>Yoga while the sun rises and the pilots fill their balloons</small></span><i>Select date →</i></a>
+    <a class="tile" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675"><span class="oi">🚲</span><span><b>E-Bike Ride</b><small>From $129 · Self-guided trip to a fourth-generation maple farm</small></span><i>View →</i></a>
+    <a class="tile" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675"><span class="oi">🎟️</span><span><b>Balloon Ride Raffle</b><small>Your chance to win a trip to the skies</small></span><i>Buy →</i></a>
+  </div>
+  <div class="grid g2" style="gap:14px;margin-top:10px;align-items:start"><details><summary>Why don't you sell day passes?</summary><p>The grounds are open rain or shine, but launches depend on safe weather. A weekend pass lets you come on multiple days, which gives you more chances to see balloons fly, and keeps prices accessible. Youth in foster care and participating schools receive passes.</p></details>
+  <p style="padding:14px 4px;color:var(--muted)">2027 tickets not out yet? <a href="#alerts" style="color:#9a410d;font-weight:700">Get a text when they drop.</a></p></div>
 </div></section>
 
 <section id="gallery" data-label="Gallery"><div class="wrap">
@@ -93,7 +97,7 @@ details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:
 <div class="ticketbar" id="tbar"><div class="wrap"><div><b>🎈 Quechee Balloon Festival</b><small>Weekend passes &amp; adventure rides</small></div><a class="btn btn-primary" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">🎟️ Buy Tickets</a></div></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="app.js?v=23"></script>
+<script src="app.js?v=24"></script>
 <script>
 const m=L.map('map',{scrollWheelZoom:false}).setView([43.6467,-72.4197],14);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors'}).addTo(m);
