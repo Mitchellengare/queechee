@@ -296,3 +296,24 @@ html.snap .sched td,html.snap .sched th{padding:9px 16px}
 html.snap .rule{padding:8px 12px;font-size:.9rem}
 
 .hero h1{font-size:clamp(2.1rem,4.2vw,3.5rem)}
+
+/* home hero: The Mill at dusk, darkened on the left so the headline stays readable */
+.hero{background:linear-gradient(90deg,rgba(15,40,25,.88) 0%,rgba(15,40,25,.62) 45%,rgba(15,40,25,.15) 100%),url(img/mill.jpg) center/cover}
+.hero h1,.hero p{text-shadow:0 2px 18px rgba(0,0,0,.35)}
+
+/* ---- calmer type ---- */
+h1,.hero h1{font-size:clamp(2rem,3.6vw,3rem)}
+h2{font-size:clamp(1.6rem,2.4vw,2.1rem)}
+h3{font-size:1.15rem}
+.lead{font-size:1.05rem}
+.btn{font-size:1rem}
+.btn-lg{padding:13px 30px;font-size:1.02rem}
+.hero p{font-size:1.05rem}
+.quote{font-size:1.2rem}
+html.snap .page-hero h1{font-size:clamp(2rem,3.8vw,3.1rem)}
+html.snap .page-hero p{font-size:1.05rem}
+html.snap .bf-band h2{font-size:clamp(1.8rem,3.2vw,2.6rem)}
+.bf-hero h1{font-size:clamp(2rem,3.8vw,3.2rem)}
+.bf-hero .count b,.bf-band .count b,html.snap .bf-band .count b{font-size:1.9rem}
+.bf-hero .count div{min-width:78px;padding:10px 12px}
+.eyebrow{font-size:.8rem}

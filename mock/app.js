@@ -125,7 +125,7 @@ document.addEventListener('click',e=>{
     secs.forEach(x=>{
       const w=x.querySelector(':scope>.wrap');if(!w)return;
       if(!root.classList.contains('snap')||x.querySelector('#map,.map')){w.style.zoom='';return}
-      const target=(innerHeight-80-56)*.93;let lo=.7,hi=+(x.dataset.maxzoom||1.45);
+      const target=(innerHeight-80-56)*.93;let lo=.7,hi=+(x.dataset.maxzoom||1.1);
       x.style.minHeight='0';
       for(let i=0;i<8;i++){const m=(lo+hi)/2;w.style.zoom=m;(x.offsetHeight-56<=target)?lo=m:hi=m}
       w.style.zoom=lo;x.style.minHeight='';x.dataset.zoom=lo.toFixed(2);
