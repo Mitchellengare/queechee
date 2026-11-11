@@ -71,7 +71,7 @@ document.body.insertAdjacentHTML('beforeend',`
 
 /* helpers */
 const fmt=(d,o)=>new Date(d+'T12:00:00').toLocaleDateString('en-US',o);
-const badge=e=>e.host==='chamber'?'<span class="badge b-chamber">Hosted by the Chamber</span>':`<span class="badge b-community">Community · ${e.hostName||'Local'}</span>`;
+const badge=e=>e.host==='chamber'?'<span class="badge b-chamber">★ Hosted by the Chamber</span>':`<span class="badge b-community">● Community · ${e.hostName||'Local'}</span>`;
 function countdown(el){
   const tick=()=>{let ms=Math.max(0,NEXT_BF-new Date());
     const d=Math.floor(ms/864e5),h=Math.floor(ms/36e5)%24,m=Math.floor(ms/6e4)%60,s=Math.floor(ms/1e3)%60;

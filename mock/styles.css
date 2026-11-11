@@ -347,3 +347,21 @@ nav.main .dd a:hover{background:var(--sky);color:var(--green-d)}
   nav.main .dd a:hover{background:rgba(255,255,255,.08);color:#fff}
   .car{display:none}
 }
+
+/* ---- accessible host key: color + shape + words ---- */
+.sw{display:inline-grid;place-items:center;width:1.6em;height:1.6em;border-radius:6px;color:#fff;font-style:normal;font-size:.85em;margin-right:8px;flex-shrink:0}
+.sw.chamber{background:var(--chamber)}.sw.community{background:var(--community)}
+.legend-key{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:10px;font-weight:600;color:var(--ink)}
+.key{display:inline-flex;align-items:center}
+.chip .sw{width:1.4em;height:1.4em;margin-right:6px}
+.chip.on .sw{outline:2px solid #fff}
+.ev.community::before{content:'● '}
+/* orange that passes 4.5:1 with white text */
+.btn-primary,.b-orange,nav.main a.nav-bf{background:#b84f12}
+.btn-primary:hover,nav.main a.nav-bf:hover{background:#9a410d}
+.bf-band{background:linear-gradient(110deg,#a8470f,#c85a18 55%,#d9742b)}
+.eyebrow{color:#9a410d}
+/* visible keyboard focus everywhere */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #1b4a26;outline-offset:2px}
+header.site a:focus-visible,header.site button:focus-visible,footer.site a:focus-visible,.dark a:focus-visible,.hero a:focus-visible,.bf-hero a:focus-visible,.page-hero a:focus-visible,.bf-band a:focus-visible{outline-color:#fff}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}

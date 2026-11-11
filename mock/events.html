@@ -2,7 +2,7 @@
 <title>Events · Hartford Area Chamber</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=13"></head><body>
+<link rel="stylesheet" href="styles.css?v=14"></head><body>
 <main id="main">
 <section class="page-hero"><div class="wrap"><div class="crumbs"><a href="index.html">Home</a> / Events</div>
 <h1>Events in the Hartford Area</h1><p>Explore the latest local events in Hartford, the Upper Valley, and beyond.</p></div></section>
@@ -22,8 +22,8 @@
   <div class="toolbar">
     <div id="filters" style="display:contents">
       <button class="chip on" data-f="all">All events</button>
-      <button class="chip" data-f="chamber">★ Hosted by the Chamber</button>
-      <button class="chip" data-f="community">Community</button>
+      <button class="chip" data-f="chamber"><i class="sw chamber" aria-hidden="true">★</i>Hosted by the Chamber</button>
+      <button class="chip" data-f="community"><i class="sw community" aria-hidden="true">●</i>Community events</button>
     </div>
     <span class="tb-sep"></span>
     <div id="seasons" style="display:contents">
@@ -42,7 +42,7 @@
 </main>
 
 <dialog id="dlg"></dialog>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
 let filter='all',season='all';
 const inSeason=e=>season==='all'||e.season==='all'||seasonOf(e)===season; // year-round series show in every season
@@ -54,7 +54,7 @@ const today=new Date();
  document.getElementById('series').innerHTML=items.map(e=>`
  <button class="series" onclick="openEv(${e.id})"><span class="ico">${e.icon}</span>
   <span><h3>${e.title}</h3><p>${SEASONS[e.season||seasonOf(e)]||'Year-round'} · ${e.series.replace(/^Annual · /,'Every year, ')}</p></span>
-  <span class="badge ${e.host==='chamber'?'b-chamber':'b-community'}">${e.host==='chamber'?'★ Chamber':'Community'}</span></button>`).join('')})();
+  <span class="badge ${e.host==='chamber'?'b-chamber':'b-community'}">${e.host==='chamber'?'★ Chamber':'● Community'}</span></button>`).join('')})();
 const upcoming=EVENTS.filter(e=>new Date(e.date)>=new Date(today.toDateString())).sort((a,b)=>a.date.localeCompare(b.date));
 let view=new Date((upcoming[0]||EVENTS[0]).date+'T12:00:00');view.setDate(1);
 
