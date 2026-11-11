@@ -2,7 +2,7 @@
 <title>Events · Hartford Area Chamber</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=5"></head><body>
+<link rel="stylesheet" href="styles.css?v=10"></head><body>
 <main id="main">
 <section class="page-hero"><div class="wrap"><div class="crumbs"><a href="index.html">Home</a> / Events</div>
 <h1>Events in the Hartford Area</h1><p>Explore the latest local events in Hartford, the Upper Valley, and beyond.</p></div></section>
@@ -14,40 +14,35 @@
 
 <section style="padding-top:0"><div class="wrap">
   <h2>Seasonal Series</h2>
-  <p class="lead" style="margin:6px 0 18px">Some events come back every year or every week during a season. Plan around them.</p>
-  <div class="grid g4" id="series"></div>
+  <div class="grid g2" id="series" style="gap:10px;margin-top:16px"></div>
 </div></section>
 
 <section style="padding-top:0"><div class="wrap">
   <h2>Full Calendar</h2>
-  <div class="toolbar" id="filters">
-    <button class="chip on" data-f="all">All events</button>
-    <button class="chip" data-f="chamber">Hosted by the Chamber</button>
-    <button class="chip" data-f="community">Community events</button>
-    <div class="legend"><span><i class="dot" style="background:var(--chamber)"></i>Chamber</span><span><i class="dot" style="background:var(--community)"></i>Community</span></div>
-  </div>
-  <div class="toolbar" id="seasons" style="margin-top:-8px">
-    <button class="chip on" data-s="all">All seasons</button>
-    <button class="chip" data-s="summer">☀️ Summer</button>
-    <button class="chip" data-s="fall">🍂 Fall</button>
-    <button class="chip" data-s="winter">❄️ Winter</button>
-    <button class="chip" data-s="spring">🌱 Spring</button>
-    <div class="legend"><span>🔁 = recurring</span></div>
+  <div class="toolbar">
+    <div id="filters" style="display:contents">
+      <button class="chip on" data-f="all">All events</button>
+      <button class="chip" data-f="chamber">★ Hosted by the Chamber</button>
+      <button class="chip" data-f="community">Community</button>
+    </div>
+    <span class="tb-sep"></span>
+    <div id="seasons" style="display:contents">
+      <button class="chip on" data-s="all">All seasons</button>
+      <button class="chip" data-s="summer">☀️ Summer</button>
+      <button class="chip" data-s="fall">🍂 Fall</button>
+      <button class="chip" data-s="winter">❄️ Winter</button>
+      <button class="chip" data-s="spring">🌱 Spring</button>
+    </div>
   </div>
   <div class="cal">
     <div class="cal-head"><button id="prev" aria-label="Previous month">←</button><h3 id="mtitle"></h3><button id="next" aria-label="Next month">→</button></div>
     <div class="cal-grid" id="grid"></div>
   </div>
 </div></section>
-
-<section><div class="wrap">
-  <h2>Coming up</h2>
-  <div class="grid" id="list" style="gap:12px;margin-top:16px"></div>
-</div></section>
 </main>
 
 <dialog id="dlg"></dialog>
-<script src="app.js?v=5"></script>
+<script src="app.js?v=10"></script>
 <script>
 let filter='all',season='all';
 const inSeason=e=>season==='all'||e.season==='all'||seasonOf(e)===season; // year-round series show in every season
@@ -57,9 +52,9 @@ const today=new Date();
 (function(){const seen=new Set(),order=['summer','fall','winter','spring','all'];
  const items=EVENTS.filter(e=>e.series&&!seen.has(e.key)&&seen.add(e.key)).sort((a,b)=>order.indexOf(seasonOf(a))-order.indexOf(seasonOf(b)));
  document.getElementById('series').innerHTML=items.map(e=>`
- <button class="perk" style="text-align:left;cursor:pointer;font:inherit" onclick="openEv(${e.id})">
-  <span class="badge ${e.host==='chamber'?'b-chamber':'b-community'}">${SEASONS[e.season||seasonOf(e)]||'🔁 Year-round'}</span>
-  <div class="ico" style="margin-top:10px">${e.icon}</div><h3>${e.title}</h3><p>🔁 ${e.series}</p></button>`).join('')})();
+ <button class="series" onclick="openEv(${e.id})"><span class="ico">${e.icon}</span>
+  <span><h3>${e.title}</h3><p>${SEASONS[e.season||seasonOf(e)]||'Year-round'} · ${e.series.replace(/^Annual · /,'Every year, ')}</p></span>
+  <span class="badge ${e.host==='chamber'?'b-chamber':'b-community'}">${e.host==='chamber'?'★ Chamber':'Community'}</span></button>`).join('')})();
 const upcoming=EVENTS.filter(e=>new Date(e.date)>=new Date(today.toDateString())).sort((a,b)=>a.date.localeCompare(b.date));
 let view=new Date((upcoming[0]||EVENTS[0]).date+'T12:00:00');view.setDate(1);
 
@@ -121,11 +116,7 @@ function render(){
   if(i>=34&&dt.getDate()>=dim&&!out&&false)break;
  }
  grid.innerHTML=h;
- const seen=new Set();
- list.innerHTML=upcoming.filter(e=>(filter==='all'||e.host===filter)&&inSeason(e)&&!seen.has(e.key)&&seen.add(e.key)).slice(0,6).map(e=>`
- <div class="list-row"><div class="date"><span>${fmt(e.date,{month:'short'})}</span><b>${fmt(e.date,{day:'numeric'})}</b></div>
- <div style="flex:1"><h4>${e.title}</h4><p>🕒 ${e.time} · 📍 ${e.place}${e.series?' · 🔁 '+e.series:''}</p></div>${badge(e)}
- <button class="btn btn-green" style="padding:8px 16px" onclick="openEv(${e.id})">Details</button></div>`).join('');
+ window.refit&&refit();
 }
 prev.onclick=()=>{view.setMonth(view.getMonth()-1);render()};
 next.onclick=()=>{view.setMonth(view.getMonth()+1);render()};

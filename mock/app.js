@@ -118,4 +118,52 @@ document.addEventListener('click',e=>{
     e.target.querySelectorAll('.reveal').forEach(r=>r.classList.add('in'));
     dots.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}}),{threshold:.2});
   secs.forEach(x=>io.observe(x));
+
+  /* fit-to-screen: scale each section's content up or down so it fills one screen.
+     Map sections are skipped (maps don't like zoom) and sized by CSS instead. */
+  function fit(){
+    secs.forEach(x=>{
+      const w=x.querySelector(':scope>.wrap');if(!w)return;
+      if(!root.classList.contains('snap')||x.querySelector('#map,.map')){w.style.zoom='';return}
+      const target=(innerHeight-80-56)*.93;let lo=.7,hi=+(x.dataset.maxzoom||1.45);
+      x.style.minHeight='0';
+      for(let i=0;i<8;i++){const m=(lo+hi)/2;w.style.zoom=m;(x.offsetHeight-56<=target)?lo=m:hi=m}
+      w.style.zoom=lo;x.style.minHeight='';x.dataset.zoom=lo.toFixed(2);
+    });
+  }
+  window.refit=fit;
+  let ft;const refit=()=>{clearTimeout(ft);ft=setTimeout(fit,120)};
+  addEventListener('resize',refit);mq.addEventListener('change',refit);
+  (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>setTimeout(fit,60));addEventListener('load',()=>setTimeout(fit,300));
+
+  /* one scroll gesture (wheel, trackpad swipe, arrow/page keys) = one section.
+     A section taller than the screen still scrolls normally inside itself. */
+  let busy=false;const HDR=80;
+  const top=x=>x.getBoundingClientRect().top+scrollY-HDR;
+  const here=()=>{let b=0,d=1e9;secs.forEach((x,i)=>{const k=Math.abs(top(x)-scrollY);if(k<d){d=k;b=i}});return b};
+  const tall=x=>x.scrollHeight>innerHeight-HDR+6;
+  const maxY=()=>document.documentElement.scrollHeight-innerHeight;
+  function go(dir){
+    const i=here(),last=secs.length-1,inFooter=scrollY>top(secs[last])+30;
+    let y;
+    if(dir>0){y=i<last?top(secs[i+1]):maxY()}
+    else{y=inFooter?top(secs[last]):(i>0?top(secs[i-1]):0)}
+    busy=true;scrollTo({top:Math.max(0,Math.min(y,maxY())),behavior:'smooth'});setTimeout(()=>busy=false,850);
+  }
+  const blocked=()=>!root.classList.contains('snap')||document.querySelector('dialog[open]');
+  addEventListener('wheel',e=>{
+    if(blocked()||Math.abs(e.deltaY)<8||e.ctrlKey)return;
+    if(e.target.closest('.leaflet-container,textarea,dialog'))return;
+    const x=secs[here()];
+    if(tall(x)&&scrollY<top(x)+x.scrollHeight-innerHeight+HDR-4&&e.deltaY>0)return;   // still reading a tall section
+    if(tall(x)&&e.deltaY<0&&scrollY>top(x)+4)return;
+    e.preventDefault();if(!busy)go(e.deltaY>0?1:-1);
+  },{passive:false});
+  addEventListener('keydown',e=>{
+    if(blocked()||/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))return;
+    const k=e.key,dn=['ArrowDown','PageDown'].includes(k)||(k===' '&&!e.shiftKey),up=['ArrowUp','PageUp'].includes(k)||(k===' '&&e.shiftKey);
+    if(dn||up){e.preventDefault();if(!busy)go(dn?1:-1)}
+    else if(k==='Home'){e.preventDefault();scrollTo({top:0,behavior:'smooth'})}
+    else if(k==='End'){e.preventDefault();scrollTo({top:maxY(),behavior:'smooth'})}
+  });
 })();

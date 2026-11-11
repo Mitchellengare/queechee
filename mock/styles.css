@@ -255,66 +255,44 @@ html.snap .thumb{height:clamp(120px,20vh,170px)}
 nav.main a.nav-contact{border:2px solid var(--green);color:var(--green-d);font-weight:600;padding:6px 14px;border-radius:999px;margin-left:6px;box-shadow:none}
 nav.main a.nav-contact:hover,nav.main a.nav-contact.active{background:var(--green);color:#fff;box-shadow:none}
 
-/* ---- tighten tall sections so each fits one screen ---- */
-html.snap .card .thumb{height:clamp(80px,14vh,140px)}
-html.snap .center + .grid{margin-top:18px!important}
-html.snap .center + p,html.snap .center .lead{margin-top:6px}
-html.snap .perk{padding:14px 18px}
-html.snap .perk .ico{margin-bottom:4px;font-size:1.5rem}
-html.snap .day{min-height:clamp(44px,7.5vh,80px)}
-html.snap .avatar{width:54px;height:54px;font-size:1.05rem;margin-bottom:6px}
-html.snap .team{margin-top:16px!important}
-html.snap .team .perk{padding:10px 12px}
-html.snap section.alt .center[style*="margin-top:36px"]{margin-top:16px!important}
-html.snap .ticket-card .photo-top{height:clamp(60px,10vh,110px)}
-html.snap .ticket-card .body{padding:16px;gap:6px}
-html.snap .ticket-card .btn-lg{padding:12px 28px}
-html.snap h2{font-size:clamp(1.5rem,2.6vw,2.2rem)}
+/* ---- base sizes; JS then scales each section to fill its screen ---- */
+header.site,footer.site,.dots{font-size:16px}
+nav.main a{font-size:15.5px}
+.lead{font-size:1.2rem}
+.badge{font-size:.78rem;padding:5px 12px}
+.eyebrow{font-size:.88rem}
+.btn{font-size:1.05rem}
+h2{font-size:clamp(1.9rem,3.4vw,2.9rem)}
+.ev{font-size:.8rem}
+html.snap .day{min-height:clamp(46px,7vh,80px)}
+html.snap .card .thumb{height:clamp(80px,14vh,150px)}
+html.snap #map,html.snap .map{height:clamp(240px,42vh,480px)}
+html.snap .toolbar{margin:10px 0}
+html.snap .gallery{--h:clamp(120px,22vh,230px)}
+html.snap .avatar{width:56px;height:56px;font-size:1.1rem}
+html.snap main>section>.wrap{transform-origin:top center}
+/* seasonal series: one clean row per series, host always shown */
+.series{display:flex;align-items:center;gap:16px;text-align:left;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;cursor:pointer;font:inherit;color:inherit;transition:.15s}
+.series:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.series .ico{font-size:2.2rem;line-height:1}
+.series h3{font-size:1.2rem;margin-bottom:2px}.series p{color:var(--muted);font-size:.98rem}
+.series .badge{margin-left:auto;flex-shrink:0}
+.tb-sep{width:1px;height:28px;background:var(--line);margin:0 6px}
+.ev.chamber::before{content:'★ '}
+.hostkey{display:flex;gap:18px;font-size:.95rem;color:var(--muted);margin:2px 0 10px}
+@media(max-width:700px){.series{flex-wrap:wrap}.series .badge{margin-left:0}}
 
-/* ---- compact tiers: keep every section on one screen on shorter laptops ---- */
-html.snap .toolbar{margin:8px 0}
-html.snap .chip{padding:5px 13px;font-size:.84rem}
-html.snap .cal-head h3{font-size:1.15rem}
-html.snap .cal-head button{width:32px;height:32px}
-html.snap .dow{padding:6px}
-html.snap .card .body{padding:14px;gap:5px}
-html.snap .card .body .btn{padding:8px 18px}
-html.snap .card .thumb{height:clamp(56px,11vh,120px)}
-html.snap .day{min-height:clamp(38px,6.5vh,76px)}
-@media(max-height:760px){
-  html.snap main>section{padding:12px 0}
-  html.snap .lead{font-size:1rem}
-  html.snap .perk{padding:10px 14px}
-  html.snap .perk p,html.snap .card .body p{font-size:.86rem;margin-top:3px}
-  html.snap .meta{font-size:.84rem}
-  html.snap .eyebrow{margin-bottom:3px}
-  html.snap h1{font-size:clamp(2rem,4vw,3rem)}
-  html.snap .page-hero h1{font-size:clamp(2rem,4.5vw,3.2rem)}
-  html.snap .hero p,html.snap .hero .actions{margin-top:8px;margin-bottom:12px}
-  html.snap .contact-card{padding:12px 16px}html.snap .contact-card h3{margin-bottom:4px;font-size:1.05rem}
-  html.snap .sched td,html.snap .sched th{padding:8px 14px}
-  html.snap form{gap:8px}html.snap input,html.snap textarea{padding:9px 12px}
-  html.snap #map,html.snap .map{height:clamp(240px,46vh,470px)}
-  html.snap .rule{padding:8px 12px;font-size:.85rem}
-  html.snap .center .lead{margin-top:2px}
-  html.snap .count b{font-size:1.9rem!important}
-  html.snap .count div{padding:8px 10px!important}
-  html.snap .bf-hero .count{margin:14px 0}
-  html.snap details{padding:9px 14px;margin-top:8px}
-}
+/* about: ED + board in one tidy grid */
+.board{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:22px}
+.board .perk{padding:14px 10px}
+.board .perk.lead-card{border-color:var(--orange);background:#fff8f1}
+@media(max-width:900px){.board{grid-template-columns:repeat(2,1fr)}}
 
-@media(max-height:680px){
-  html.snap .list-row{padding:7px 12px}
-  html.snap .list-row .date{padding:4px 12px}html.snap .list-row .date b{font-size:1.2rem}
-  html.snap #list{gap:8px!important}
-  html.snap .day{min-height:clamp(32px,5.8vh,70px)}
-  html.snap .avatar{width:42px;height:42px;font-size:.9rem;margin-bottom:3px}
-  html.snap .team p{font-size:.78rem}
-  html.snap .perk .ico{font-size:1.25rem;margin-bottom:0}
-  html.snap .card .thumb{height:clamp(44px,9vh,100px)}
-  html.snap .badge{font-size:.66rem;padding:3px 9px}
-  html.snap .card .body{padding:12px;gap:3px}
-  html.snap h3{font-size:1.1rem}
-  html.snap .center{margin-bottom:0}
-  html.snap h2{font-size:clamp(1.4rem,2.4vw,1.9rem)}
-}
+/* denser sections */
+.series{padding:12px 16px;gap:12px}.series .ico{font-size:1.8rem}.series h3{font-size:1.1rem}.series p{font-size:.92rem}
+html.snap .card .thumb{height:clamp(64px,11vh,120px)}
+html.snap .ticket-card .photo-top{height:clamp(60px,9vh,110px)}
+html.snap .sched td,html.snap .sched th{padding:9px 16px}
+html.snap .rule{padding:8px 12px;font-size:.9rem}
+
+.hero h1{font-size:clamp(2.1rem,4.2vw,3.5rem)}

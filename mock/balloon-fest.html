@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=10">
 <style>.bf-hero{background:linear-gradient(180deg,rgba(20,52,39,.25),rgba(20,52,39,.8)),url(img/qbf-d.jpg) center/cover;color:#fff;padding:110px 0 90px;text-align:center}
 .bf-hero h1{color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.35)}.bf-hero .count{justify-content:center;margin:28px 0}.bf-hero .count b{font-size:2.6rem}.bf-hero .count div{min-width:92px;padding:14px;backdrop-filter:blur(6px)}
 .bf-hero .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
@@ -33,7 +33,7 @@ details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:
 </div></section>
 
 <section class="alt" id="tickets" data-label="Tickets"><div class="wrap">
-  <div class="center"><p class="eyebrow">Tickets</p><h2>Choose your adventure</h2><p class="lead">Tickets are sold in advance online. Advance pricing is discounted.</p></div>
+  <div class="center"><p class="eyebrow">Tickets</p><h2>Choose your adventure</h2></div>
   <div class="grid g2" style="margin-top:32px">
     <div class="ticket-card best"><div class="photo-top" style="background-image:url(img/qbf-c.jpg)"><span class="tag">Most popular</span></div>
       <div class="body"><h3>🎪 Weekend Pass</h3>
@@ -46,7 +46,7 @@ details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:
   </div>
   <div class="grid g2" style="gap:14px;margin-top:6px"><details><summary>Why don't you sell day passes?</summary><p>The grounds are open rain or shine, but launches depend on safe weather. A weekend pass lets you come on multiple days, which gives you more chances to see balloons fly, and keeps prices accessible. Ticket prices haven't changed in years.</p></details>
   <details><summary>Free and discounted passes</summary><p>Passes are offered to local youth in foster care and participating schools. Children under 12 are eligible for discounted admission.</p></details></div>
-  <p class="center" style="margin-top:22px;color:var(--muted)">2027 tickets not out yet? <a href="#alerts" style="color:var(--orange-d);font-weight:600">Get a text when they drop.</a></p>
+  <p class="center" style="margin-top:12px;color:var(--muted)">2027 tickets not out yet? <a href="#alerts" style="color:var(--orange-d);font-weight:600">Get a text when they drop.</a></p>
 </div></section>
 
 <section id="gallery" data-label="Gallery"><div class="wrap">
@@ -75,9 +75,8 @@ details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:
     <div>
       <table class="sched"><tr><th>Day</th><th>2026 hours (2027 TBA)</th></tr>
       <tr><td>Friday</td><td>3:00 PM – 9:00 PM</td></tr><tr><td>Saturday</td><td>5:45 AM – 9:00 PM</td></tr><tr><td>Sunday</td><td>5:45 AM – 8:00 PM</td></tr></table>
-      <p style="margin:16px 0"><b>Where:</b> Village Green, Quechee, VT 05059</p>
-      <h3 style="margin-bottom:10px">Festival rules</h3>
-      <div class="rules"><span class="rule">🐕 No pets (service animals welcome)</span><span class="rule">🍺 No outside alcohol (beer/wine tent on site)</span><span class="rule">🛸 No drones</span></div>
+      <p style="margin:10px 0 8px"><b>Where:</b> Village Green, Quechee, VT 05059</p>
+      <div class="rules"><span class="rule">🐕 No pets*</span><span class="rule">🍺 No outside alcohol</span><span class="rule">🛸 No drones</span></div><p style="font-size:.85rem;color:var(--muted);margin-top:8px">*Service animals welcome. Beer and wine tent on site.</p>
     </div>
     <div id="map" class="map"></div>
   </div>
@@ -94,7 +93,7 @@ details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:
 <div class="ticketbar" id="tbar"><div class="wrap"><div><b>🎈 Quechee Balloon Festival</b><small>Weekend passes &amp; adventure rides</small></div><a class="btn btn-primary" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">🎟️ Buy Tickets</a></div></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="app.js?v=5"></script>
+<script src="app.js?v=10"></script>
 <script>
 const m=L.map('map',{scrollWheelZoom:false}).setView([43.6469,-72.4173],14);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors'}).addTo(m);

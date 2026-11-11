@@ -2,7 +2,7 @@
 <title>Hartford Area Chamber of Commerce</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=5"></head><body>
+<link rel="stylesheet" href="styles.css?v=10"></head><body>
 <main id="main">
 <section class="hero"><div class="wrap">
   <p class="eyebrow" style="color:#ffd2b0">Quechee · White River Junction · Hartford Village · West Hartford · Wilder</p>
@@ -19,7 +19,7 @@
 </div></section>
 
 <section><div class="wrap">
-  <div class="center"><p class="eyebrow">What's happening</p><h2>Upcoming Events</h2><p class="lead">A look at what's next. Green means hosted by the Chamber, blue means a community event.</p></div>
+  <div class="center"><p class="eyebrow">What's happening</p><h2>Upcoming Events</h2><p class="lead">★ Green = hosted by the Chamber. Blue = community event.</p></div>
   <div class="grid g3" id="feat" style="margin-top:32px"></div>
   <p class="center" style="margin-top:16px"><a class="btn btn-green" href="events.html">View full calendar</a></p>
 </div></section>
@@ -42,17 +42,19 @@
   <p class="center" style="margin-top:28px"><a class="btn btn-green" href="membership.html">View member benefits</a></p>
 </div></section>
 
-<section class="dark" id="Contact"><div class="wrap split">
-  <div><h2>Join, Visit, or Get Connected</h2><p style="margin:12px 0">Hartford Area Chamber of Commerce<br>5966 Woodstock Road, Quechee, VT 05059<br>Mon–Fri 10:00–4:00 · 802.295.7900</p></div>
-  <form onsubmit="event.preventDefault();this.innerHTML='<h3 style=color:#fff>Thank you for contacting us.</h3>'">
-    <input placeholder="Name" required aria-label="Name"><input type="email" placeholder="Email" required aria-label="Email"><input placeholder="Phone" aria-label="Phone"><textarea rows="4" placeholder="Message" aria-label="Message"></textarea>
-    <button class="btn btn-primary">Send message</button>
-  </form>
+<section class="dark" id="Contact"><div class="wrap center">
+  <h2>Join, Visit, or Get Connected</h2>
+  <p class="lead" style="color:#cfe2d8;margin:10px auto 22px">5966 Woodstock Road, Quechee, VT · Mon–Fri 10–4 · <a href="tel:8022957900" style="text-decoration:underline">802.295.7900</a></p>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+    <a class="btn btn-primary btn-lg" href="membership.html">Join Today</a>
+    <a class="btn btn-ghost btn-lg" style="color:#fff;box-shadow:none" href="contact.html">Contact Us</a>
+    <a class="btn btn-ghost btn-lg" style="color:#fff;box-shadow:none" href="visit.html">Explore the Area</a>
+  </div>
 </div></section>
 </main>
-<script src="app.js?v=5"></script>
+<script src="app.js?v=10"></script>
 <script>
-document.getElementById('feat').innerHTML=['speed','first-friday','bf'].map(k=>EVENTS.filter(e=>e.key===k&&e.date>=new Date().toISOString().slice(0,10))[0]||EVENTS.find(e=>e.key===k)).map(e=>`
+document.getElementById('feat').innerHTML=['speed','first-friday','pentangle'].map(k=>EVENTS.filter(e=>e.key===k&&e.date>=new Date().toISOString().slice(0,10))[0]||EVENTS.find(e=>e.key===k)).map(e=>`
 <article class="card"><div class="thumb ${e.thumb}${e.img?' photo':''}" ${thumbBg(e)}>${e.icon}</div>
 <div class="body">${badge(e)}<h3>${e.title}</h3>
 <div class="meta"><span>📅 ${fmt(e.date,{month:'long',day:'numeric',year:'numeric'})}${e.end?' – '+fmt(e.end,{day:'numeric'}):''}</span><span>🕒 ${e.time}</span><span>📍 ${e.place}</span></div>
