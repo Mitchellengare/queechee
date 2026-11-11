@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Events · Hartford Area Chamber</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css"></head><body>
 <main id="main">
 <div class="page-hero"><div class="wrap"><div class="crumbs"><a href="index.html">Home</a> / Events</div>
@@ -13,12 +13,26 @@
 </div></section>
 
 <section style="padding-top:0"><div class="wrap">
+  <h2>Seasonal Series</h2>
+  <p class="lead" style="margin:6px 0 18px">Some events come back every year or every week during a season. Plan around them.</p>
+  <div class="grid g4" id="series"></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
   <h2>Full Calendar</h2>
   <div class="toolbar" id="filters">
     <button class="chip on" data-f="all">All events</button>
     <button class="chip" data-f="chamber">Hosted by the Chamber</button>
     <button class="chip" data-f="community">Community events</button>
     <div class="legend"><span><i class="dot" style="background:var(--chamber)"></i>Chamber</span><span><i class="dot" style="background:var(--community)"></i>Community</span></div>
+  </div>
+  <div class="toolbar" id="seasons" style="margin-top:-8px">
+    <button class="chip on" data-s="all">All seasons</button>
+    <button class="chip" data-s="summer">☀️ Summer</button>
+    <button class="chip" data-s="fall">🍂 Fall</button>
+    <button class="chip" data-s="winter">❄️ Winter</button>
+    <button class="chip" data-s="spring">🌱 Spring</button>
+    <div class="legend"><span>🔁 = recurring</span></div>
   </div>
   <div class="cal">
     <div class="cal-head"><button id="prev" aria-label="Previous month">←</button><h3 id="mtitle"></h3><button id="next" aria-label="Next month">→</button></div>
@@ -32,20 +46,61 @@
 <dialog id="dlg"></dialog>
 <script src="app.js"></script>
 <script>
-let filter='all';
+let filter='all',season='all';
+const inSeason=e=>season==='all'||e.season==='all'||seasonOf(e)===season; // year-round series show in every season
 const today=new Date();
+
+/* Seasonal series cards: one per recurring event, grouped by season */
+(function(){const seen=new Set(),order=['summer','fall','winter','spring','all'];
+ const items=EVENTS.filter(e=>e.series&&!seen.has(e.key)&&seen.add(e.key)).sort((a,b)=>order.indexOf(seasonOf(a))-order.indexOf(seasonOf(b)));
+ document.getElementById('series').innerHTML=items.map(e=>`
+ <button class="perk" style="text-align:left;cursor:pointer;font:inherit" onclick="openEv(${e.id})">
+  <span class="badge ${e.host==='chamber'?'b-chamber':'b-community'}">${SEASONS[e.season||seasonOf(e)]||'🔁 Year-round'}</span>
+  <div class="ico" style="margin-top:10px">${e.icon}</div><h3>${e.title}</h3><p>🔁 ${e.series}</p></button>`).join('')})();
 const upcoming=EVENTS.filter(e=>new Date(e.date)>=new Date(today.toDateString())).sort((a,b)=>a.date.localeCompare(b.date));
 let view=new Date((upcoming[0]||EVENTS[0]).date+'T12:00:00');view.setDate(1);
 
-document.getElementById('featured').innerHTML=EVENTS.filter(e=>[2,4,9].includes(e.id)).map(e=>`
+document.getElementById('featured').innerHTML=['speed','first-friday','bf'].map(k=>EVENTS.filter(e=>e.key===k&&e.date>=today.toISOString().slice(0,10))[0]||EVENTS.find(e=>e.key===k)).map(e=>`
 <article class="card"><div class="thumb ${e.thumb}">${e.icon}</div><div class="body">${badge(e)}<h3>${e.title}</h3>
 <div class="meta"><span>📅 ${fmt(e.date,{weekday:'short',month:'short',day:'numeric'})}${e.end?' – '+fmt(e.end,{day:'numeric'}):''}</span><span>🕒 ${e.time}</span><span>📍 ${e.place}</span></div>
 <p>${e.desc}</p><button class="btn btn-green" onclick="openEv(${e.id})">Details</button></div></article>`).join('');
 
 function openEv(id){const e=EVENTS.find(x=>x.id===id),d=document.getElementById('dlg');
  d.innerHTML=`<div class="thumb ${e.thumb}">${e.icon}</div><div class="inner">${badge(e)}<h3>${e.title}</h3>
- <div class="meta"><span>📅 ${fmt(e.date,{weekday:'long',month:'long',day:'numeric',year:'numeric'})}${e.end?' – '+fmt(e.end,{month:'long',day:'numeric'}):''}</span><span>🕒 ${e.time}</span><span>📍 ${e.place}</span></div>
- <p>${e.desc}</p><div style="display:flex;gap:10px;flex-wrap:wrap">${e.bf?'<a class="btn btn-primary" href="balloon-fest.html">Festival site</a>':''}<button class="btn btn-ghost" style="color:var(--green)" onclick="dlg.close()">Close</button></div></div>`;d.showModal()}
+ <div class="meta"><span>📅 ${fmt(e.date,{weekday:'long',month:'long',day:'numeric',year:'numeric'})}${e.end?' – '+fmt(e.end,{month:'long',day:'numeric'}):''}</span><span>🕒 ${e.time}</span><span>📍 ${e.place}</span>${e.series?`<span>🔁 ${e.series} · ${SEASONS[e.season]||'Year-round'}</span>`:''}</div>
+ <p>${e.desc}</p><div style="display:flex;gap:10px;flex-wrap:wrap">${e.bf?'<a class="btn btn-primary" href="balloon-fest.html">Festival site</a>':''}<button class="btn btn-ghost" style="color:var(--green)" onclick="dlg.close()">Close</button></div>
+ ${reviewsHTML(e)}</div>`;
+ d.insertAdjacentHTML('afterbegin','<button class="x" aria-label="Close" onclick="dlg.close()">✕</button>');
+ d.dataset.tone=e.thumb;d.showModal();d.scrollTop=0}
+
+/* Sample reviews from past editions (placeholders). Photos are gradient tiles; real uploads show as images. */
+const REVIEWS={
+ bf:[{n:'Sarah K.',y:2025,s:5,t:'Watching the dawn launch from the green was magical. Arrive early and bring a blanket!',p:['🎈','🌅','👨‍👩‍👧']},
+    {n:'Mike D.',y:2024,s:4,t:'Great food and music. Parking was a bit of a walk, but worth it for the view.',p:['🎶']}],
+ 'first-friday':[{n:'Priya R.',y:2025,s:5,t:'Gallery hopping and live music all night. Such a fun downtown vibe.',p:['🎨','🎶']}],
+ foliage:[{n:'Tom B.',y:2025,s:5,t:'Gorgeous colors and I found a handmade gift at the pop-up shop.',p:['🍂']}],
+ gory:[{n:'Elena M.',y:2025,s:4,t:'The parade was wild and so creative. Dress up and bring the kids early for trunk or treat!',p:['🎃','🥁']}]
+};
+const userRv={};
+dlg.addEventListener('click',ev=>{if(ev.target===dlg)dlg.close()}); // click the blurred backdrop to close
+function reviewsHTML(e){
+ const list=[...(REVIEWS[e.key]||[]),...(userRv[e.id]||[])];
+ const avg=list.length?(list.reduce((a,r)=>a+r.s,0)/list.length).toFixed(1):null;
+ const card=r=>`<div class="rv"><div><span class="stars">${'★'.repeat(r.s)}${'☆'.repeat(5-r.s)}</span> <b>${r.n}</b> <small>· ${r.y}</small></div><p>${r.t}</p>
+  ${r.p&&r.p.length?`<div class="rv-photos">${r.p.map(p=>p.startsWith('blob:')?`<img src="${p}" alt="Visitor photo">`:`<span class="${e.thumb}">${p}</span>`).join('')}</div>`:''}</div>`;
+ return `<div class="rv-head"><div><h4>From past years</h4>${avg?`<span class="stars">★</span> <b>${avg}</b> <small>(${list.length} review${list.length>1?'s':''})</small>`:'<small>No reviews yet. Be the first!</small>'}</div>
+  <button class="btn btn-green" style="padding:8px 16px" onclick="this.closest('dialog').querySelector('.rvform').classList.toggle('show')">Share your experience</button></div>
+ <form class="rvform" onsubmit="addRv(event,${e.id})">
+  <input name="n" placeholder="Your name" required aria-label="Your name">
+  <select name="s" aria-label="Rating" style="padding:12px;border-radius:10px;border:1.5px solid var(--line);font:1rem var(--font-b)"><option value="5">★★★★★ Loved it</option><option value="4">★★★★ Great</option><option value="3">★★★ Good</option><option value="2">★★ Fair</option><option value="1">★ Poor</option></select>
+  <textarea name="t" rows="3" placeholder="How was it?" required aria-label="Your review"></textarea>
+  <input type="file" name="p" accept="image/*" multiple aria-label="Add photos">
+  <small>Reviews are checked by the Chamber before they appear publicly. Have a concern? <a href="index.html#Contact">Tell us privately</a>.</small>
+  <button class="btn btn-primary">Submit review</button></form>
+ <div style="display:grid;gap:10px">${list.map(card).join('')}</div>`}
+function addRv(ev,id){ev.preventDefault();const f=ev.target,photos=[...f.p.files].slice(0,4).map(x=>URL.createObjectURL(x));
+ (userRv[id]=userRv[id]||[]).push({n:f.n.value,y:new Date().getFullYear(),s:+f.s.value,t:f.t.value,p:photos});
+ openEv(id);dlg.querySelector('.rv-head').insertAdjacentHTML('afterend','<p class="rv" style="background:#e6f4ea">Thanks! In the real site this would be held for Chamber approval first. Shown here as a preview.</p>')}
 
 function render(){
  const y=view.getFullYear(),m=view.getMonth();
@@ -56,19 +111,24 @@ function render(){
   let day=i-first+1,out=false,cm=m,cy=y;
   if(day<1){day+=prevDim;out=true;cm=m-1}else if(day>dim){day-=dim;out=true;cm=m+1}
   const dt=new Date(y,cm,day),iso=dt.toISOString().slice(0,10).replace(/.*/,()=>`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`);
-  const evs=EVENTS.filter(e=>(filter==='all'||e.host===filter)&&iso>=e.date&&iso<=(e.end||e.date));
+  const evs=EVENTS.filter(e=>(filter==='all'||e.host===filter)&&inSeason(e)&&iso>=e.date&&iso<=(e.end||e.date));
   const isToday=dt.toDateString()===today.toDateString();
-  h+=`<div class="day ${out?'out':''} ${isToday?'today':''}"><span class="n">${day}</span>${evs.map(e=>`<button class="ev ${e.host}" onclick="openEv(${e.id})" title="${e.title}">${e.title}</button>`).join('')}</div>`;
+  h+=`<div class="day ${out?'out':''} ${isToday?'today':''}"><span class="n">${day}</span>${evs.map(e=>`<button class="ev ${e.host}" onclick="openEv(${e.id})" title="${e.title}">${e.series?'🔁 ':''}${e.title}</button>`).join('')}</div>`;
   if(i>=34&&dt.getDate()>=dim&&!out&&false)break;
  }
  grid.innerHTML=h;
- list.innerHTML=upcoming.filter(e=>filter==='all'||e.host===filter).map(e=>`
+ const seen=new Set();
+ list.innerHTML=upcoming.filter(e=>(filter==='all'||e.host===filter)&&inSeason(e)&&!seen.has(e.key)&&seen.add(e.key)).map(e=>`
  <div class="list-row"><div class="date"><span>${fmt(e.date,{month:'short'})}</span><b>${fmt(e.date,{day:'numeric'})}</b></div>
- <div style="flex:1"><h4>${e.title}</h4><p>🕒 ${e.time} · 📍 ${e.place}</p></div>${badge(e)}
+ <div style="flex:1"><h4>${e.title}</h4><p>🕒 ${e.time} · 📍 ${e.place}${e.series?' · 🔁 '+e.series:''}</p></div>${badge(e)}
  <button class="btn btn-green" style="padding:8px 16px" onclick="openEv(${e.id})">Details</button></div>`).join('');
 }
 prev.onclick=()=>{view.setMonth(view.getMonth()-1);render()};
 next.onclick=()=>{view.setMonth(view.getMonth()+1);render()};
 filters.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;filter=b.dataset.f;[...filters.querySelectorAll('.chip')].forEach(c=>c.classList.toggle('on',c===b));render()};
+seasons.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;season=b.dataset.s;[...seasons.querySelectorAll('.chip')].forEach(c=>c.classList.toggle('on',c===b));
+ const first=EVENTS.filter(x=>inSeason(x)&&x.date>=today.toISOString().slice(0,10)).sort((a,b)=>a.date.localeCompare(b.date))[0]||EVENTS.find(inSeason);
+ if(first&&season!=='all'){view=new Date(first.date+'T12:00:00');view.setDate(1)} // jump the calendar to that season's next event
+ render()};
 render();
 </script></body></html>

@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hartford Area Chamber of Commerce</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css"></head><body>
 <main id="main">
 <section class="hero"><div class="wrap">
@@ -52,7 +52,7 @@
 </main>
 <script src="app.js"></script>
 <script>
-document.getElementById('feat').innerHTML=EVENTS.filter(e=>[2,3,9].includes(e.id)||e.bf).slice(0,3).map(e=>`
+document.getElementById('feat').innerHTML=['speed','first-friday','bf'].map(k=>EVENTS.filter(e=>e.key===k&&e.date>=new Date().toISOString().slice(0,10))[0]||EVENTS.find(e=>e.key===k)).map(e=>`
 <article class="card"><div class="thumb ${e.thumb}">${e.icon}${''}</div>
 <div class="body">${badge(e)}<h3>${e.title}</h3>
 <div class="meta"><span>📅 ${fmt(e.date,{month:'long',day:'numeric',year:'numeric'})}${e.end?' – '+fmt(e.end,{day:'numeric'}):''}</span><span>🕒 ${e.time}</span><span>📍 ${e.place}</span></div>
