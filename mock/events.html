@@ -2,9 +2,9 @@
 <title>Events · Hartford Area Chamber</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=14"></head><body>
+<link rel="stylesheet" href="styles.css?v=19"></head><body>
 <main id="main">
-<section class="page-hero"><div class="wrap"><div class="crumbs"><a href="index.html">Home</a> / Events</div>
+<section class="page-hero photo" style="--bg:url(img/downtown.jpg)"><div class="wrap"><div class="crumbs"><a href="index.html">Home</a> / Events</div>
 <h1>Events in the Hartford Area</h1><p>Explore the latest local events in Hartford, the Upper Valley, and beyond.</p></div></section>
 
 <section><div class="wrap">
@@ -42,7 +42,7 @@
 </main>
 
 <dialog id="dlg"></dialog>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=19"></script>
 <script>
 let filter='all',season='all';
 const inSeason=e=>season==='all'||e.season==='all'||seasonOf(e)===season; // year-round series show in every season
@@ -74,7 +74,7 @@ function openEv(id){const e=EVENTS.find(x=>x.id===id),d=document.getElementById(
 /* Sample reviews from past editions (placeholders). Photos are gradient tiles; real uploads show as images. */
 const REVIEWS={
  bf:[{n:'Sarah K.',y:2025,s:5,t:'Watching the dawn launch from the green was magical. Arrive early and bring a blanket!',p:['img/qbf-a.jpg','img/qbf-b.jpg','img/qbf-d.jpg']},
-    {n:'Mike D.',y:2024,s:4,t:'Great food and music. Parking was a bit of a walk, but worth it for the view.',p:['img/balloon-fest-1.jpg']}],
+    {n:'Mike D.',y:2024,s:4,t:'Great food and music. Parking was a bit of a walk, but worth it for the view.',p:['img/downtown.jpg']}],
  'first-friday':[{n:'Priya R.',y:2025,s:5,t:'Gallery hopping and live music all night. Such a fun downtown vibe.',p:['🎨','🎶']}],
  foliage:[{n:'Tom B.',y:2025,s:5,t:'Gorgeous colors and I found a handmade gift at the pop-up shop.',p:['🍂']}],
  gory:[{n:'Elena M.',y:2025,s:4,t:'The parade was wild and so creative. Dress up and bring the kids early for trunk or treat!',p:['🎃','🥁']}]

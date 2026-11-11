@@ -225,7 +225,7 @@ nav.main ul{gap:2px}
 nav.main a{padding:8px 11px;font-size:.93rem;white-space:nowrap}
 nav.main li.hdr-phone a{color:var(--green-d);font-weight:700;padding:8px 12px}
 nav.main li.hdr-phone a:hover{background:var(--sky)}
-@media(max-width:1180px){nav.main li.hdr-phone{display:none}}
+@media(max-width:1270px){nav.main li.hdr-phone{display:none}}
 @media(max-width:900px){nav.main li.hdr-phone{display:block}}
 
 /* ---- ONE SECTION AT A TIME (all pages, wide screens) ---- */
@@ -365,3 +365,38 @@ nav.main .dd a:hover{background:var(--sky);color:var(--green-d)}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #1b4a26;outline-offset:2px}
 header.site a:focus-visible,header.site button:focus-visible,footer.site a:focus-visible,.dark a:focus-visible,.hero a:focus-visible,.bf-hero a:focus-visible,.page-hero a:focus-visible,.bf-band a:focus-visible{outline-color:#fff}
 @media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
+
+/* ---- true black header, roomier nav ---- */
+header.site{background:#0d0d0d}
+header.site .wrap{max-width:1360px}
+.logo img{height:48px}
+nav.main ul{gap:8px}
+nav.main a{padding:10px 16px;font-size:15.5px;letter-spacing:.01em}
+nav.main a.nav-contact{padding:8px 20px;margin-left:10px}
+nav.main a.nav-bf{padding:10px 20px;margin-left:14px}
+nav.main li.has-dd>a{padding-right:14px}
+.car{margin-left:4px}
+/* collapse to the menu button earlier so the nav never feels squeezed */
+@media(max-width:1270px){
+  .menu-btn{display:block}
+  nav.main{position:absolute;top:80px;left:0;right:0;background:#0d0d0d;border-bottom:3px solid var(--orange);margin-left:0;display:none}
+  nav.main.open{display:block}
+  nav.main ul{flex-direction:column;align-items:stretch;padding:12px 20px;gap:2px}
+  nav.main a.nav-contact,nav.main a.nav-bf{margin-left:0;text-align:center;margin-top:6px}
+  .dd{position:static;display:block;background:transparent;box-shadow:none;padding:0 0 0 14px;margin:0;min-width:0}
+  .dd::before{display:none}
+  nav.main .dd a{color:#cfdcd5;padding:8px 14px;font-size:.92rem}
+  nav.main .dd a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .car{display:none}
+}
+
+.logo{flex-shrink:0}
+
+/* title screens with photos: dark on the left so the headline always reads */
+.page-hero.photo{background:linear-gradient(90deg,rgba(10,22,15,.9) 0%,rgba(10,22,15,.68) 45%,rgba(10,22,15,.22) 100%),var(--bg) center/cover}
+.page-hero.photo h1,.page-hero.photo p{text-shadow:0 2px 16px rgba(0,0,0,.4)}
+.page-hero.photo .crumbs,.page-hero.photo .crumbs a{color:#e4efe8}
+
+.stats{display:flex;gap:28px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:18px}
+.stats b{display:block;font:700 1.9rem var(--font-h);color:var(--green)}
+.stats span{font-size:.92rem;color:var(--muted)}

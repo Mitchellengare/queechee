@@ -2,7 +2,7 @@
 <title>Hartford Area Chamber of Commerce</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=14"></head><body>
+<link rel="stylesheet" href="styles.css?v=19"></head><body>
 <main id="main">
 <section class="hero"><div class="wrap">
   <p class="eyebrow" style="color:#ffd2b0">Quechee · White River Junction · Hartford Village · West Hartford · Wilder</p>
@@ -28,7 +28,7 @@
   <div><p class="eyebrow">Visit &amp; Explore</p><h2>Quechee Gorge Visitor Center</h2>
     <p class="lead" style="margin:12px 0 20px">Your gateway to exploring Vermont's deepest gorge. The center welcomes more than 100,000 visitors each year. Open daily 9:00 AM–5:00 PM.</p>
     <a class="btn btn-green" href="visit.html">Plan Your Visit</a></div>
-  <div class="panel photo t-gorge" style="background-image:url(img/autumn.jpg)" role="img" aria-label="Quechee Gorge Visitor Center in fall">🏞️</div>
+  <div class="panel photo t-gorge" style="background-image:url(img/gorge-bridge.jpg)" role="img" aria-label="The bridge over Quechee Gorge">🏞️</div>
 </div></section>
 
 <section><div class="wrap">
@@ -52,7 +52,7 @@
   </div>
 </div></section>
 </main>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=19"></script>
 <script>
 document.getElementById('feat').innerHTML=['speed','first-friday','pentangle'].map(k=>EVENTS.filter(e=>e.key===k&&e.date>=new Date().toISOString().slice(0,10))[0]||EVENTS.find(e=>e.key===k)).map(e=>`
 <article class="card"><div class="thumb ${e.thumb}${e.img?' photo':''}" ${thumbBg(e)}>${e.icon}</div>
