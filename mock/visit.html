@@ -3,44 +3,68 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link rel="stylesheet" href="styles.css?v=19"></head><body>
+<link rel="stylesheet" href="styles.css?v=23"></head><body>
 <main id="main">
 <section class="page-hero photo" style="--bg:url(img/quechee-aerial.jpg)"><div class="wrap"><div class="crumbs"><a href="index.html">Home</a> / Visit &amp; Explore</div>
 <h1>Visit, Explore, and Experience the Hartford Area</h1><p>Gorges, covered bridges, historic downtowns and four seasons of Vermont.</p></div></section>
 
-<section id="explore-map"><div class="wrap">
-  <h2>Find your way around</h2><p class="lead" style="margin:8px 0 20px">Tap a pin to see what's there. Filter by type.</p>
-  <div class="toolbar" id="mf"><button class="chip on" data-c="all">All</button><button class="chip" data-c="see">See &amp; Do</button><button class="chip" data-c="info">Visitor info</button><button class="chip" data-c="event">Event sites</button></div>
-  <div id="map" role="application" aria-label="Interactive map of the Hartford area"></div>
-  <p style="font-size:.8rem;color:var(--muted);margin-top:8px">Pin locations are approximate for this mock.</p>
+<!-- Sections follow the "Visit & Explore" menu order: Visitor Center, State Park Map, Covered Bridges, Area History -->
+<section id="visitor-center"><div class="wrap split">
+  <div><p class="eyebrow">1 · Quechee Gorge Visitor Center</p><h2>Your gateway to Vermont's deepest gorge</h2>
+  <p class="lead" style="margin:10px 0">Managed by the Chamber with the Army Corps of Engineers and the Vermont Department of Forests, Parks, and Recreation. The center welcomes more than 100,000 visitors each year.</p>
+  <p><b>Hours:</b> 9:00 AM–5:00 PM daily<br><b>Phone:</b> 802.295.6852<br><b>Address:</b> 5966 Woodstock Road, Quechee, VT 05059</p></div>
+  <div class="panel photo" style="background-image:url(img/autumn.jpg)" role="img" aria-label="Quechee Gorge Visitor Center in fall"></div>
 </div></section>
 
-<section class="alt" id="places"><div class="wrap">
-  <h2>Places to go</h2>
-  <div class="grid g4" style="margin-top:24px">
+<section class="alt" id="explore-map"><div class="wrap">
+  <p class="eyebrow">2 · Quechee State Park Map</p>
+  <h2>Find your way around</h2><p class="lead" style="margin:8px 0 12px">Tap a pin to see what's there, then get directions.</p>
+  <div class="toolbar" id="mf"><button class="chip on" data-c="all">All</button><button class="chip" data-c="see">See &amp; Do</button><button class="chip" data-c="info">Visitor info</button><button class="chip" data-c="event">Event sites</button></div>
+  <div id="map" role="application" aria-label="Interactive map of the Hartford area"></div>
+</div></section>
+
+<section id="covered-bridges"><div class="wrap split">
+  <div class="panel photo" style="background-image:url(img/lincoln-bridge.jpg)" role="img" aria-label="Lincoln Covered Bridge over a river"></div>
+  <div><p class="eyebrow">3 · Covered Bridges of Windsor County</p><h2>Fifteen covered bridges, a short drive apart</h2>
+  <p class="lead" style="margin:8px 0 14px">One of Vermont's most beloved sights. Here are four near Quechee.</p>
+  <ul class="facts">
+    <li><b>Quechee Covered Bridge</b> · Waterman Hill Rd. Steel with a wood covering; rebuilt after Hurricane Irene in 2013. Crosses the river waterfall, a favorite spot for watching balloons.</li>
+    <li><b>Taftsville Covered Bridge</b> · Woodstock. Built 1836, 186 feet, one of Vermont's longest.</li>
+    <li><b>Lincoln Covered Bridge</b> · Woodstock. Built 1877, 136 feet, a registered US historic site.</li>
+    <li><b>Middle Covered Bridge</b> · Woodstock. Built 1877, rebuilt 1969 in lattice-and-peg style; survived a fire in 1974.</li>
+  </ul></div>
+</div></section>
+
+<section class="alt" id="area-history"><div class="wrap">
+  <div class="center"><p class="eyebrow">4 · Area History and Information</p><h2>Hartford's five villages</h2></div>
+  <div class="board villages">
+    <div class="perk"><h3>Hartford Village</h3><b>A historic hub on the White River</b><p>Once made chairs, tools and textiles. Today a walkable village with swimming holes and the Upper Valley's only dog park.</p></div>
+    <div class="perk"><h3>Quechee</h3><b>From mill town to resort</b><p>Settled in the 1760s around river mills. The Gorge draws over 200,000 visitors a year.</p></div>
+    <div class="perk"><h3>White River Junction</h3><b>From railroad hub to arts district</b><p>Galleries, professional theater, music venues and restaurants downtown.</p></div>
+    <div class="perk"><h3>West Hartford</h3><b>Rural charm on the river</b><p>Kayaking, tubing and fishing, a country store, library and the new Patriot's Bridge.</p></div>
+    <div class="perk"><h3>Wilder</h3><b>A planned community</b><p>Named for Charles Wilder. Home to the Wilder Dam and Salmon Ladder.</p></div>
+  </div>
+</div></section>
+
+<section id="places"><div class="wrap">
+  <div class="center"><p class="eyebrow">Plan your stay</p><h2>Places to go</h2></div>
+  <div class="grid g4" style="margin-top:20px">
     <a class="card" href="#" style="text-decoration:none"><div class="thumb t-spring">🛏️</div><div class="body"><h3>Places to Stay</h3><p>Inns, motels and lodging.</p></div></a>
     <a class="card" href="#" style="text-decoration:none"><div class="thumb t-town">🛍️</div><div class="body"><h3>Shopping</h3><p>Local shops and makers.</p></div></a>
     <a class="card" href="#" style="text-decoration:none"><div class="thumb t-gorge">🥾</div><div class="body"><h3>Recreation</h3><p>Trails, parks and water.</p></div></a>
     <a class="card" href="#" style="text-decoration:none"><div class="thumb t-bridge">🍽️</div><div class="body"><h3>Eat &amp; Drink</h3><p>Farm-to-table and cafes.</p></div></a>
   </div>
 </div></section>
-
-<section id="visitor-center"><div class="wrap split">
-  <div><h2>Quechee Gorge Visitor Center</h2><p class="lead" style="margin:10px 0">Managed by the Chamber with the Army Corps of Engineers and the Vermont Department of Forests, Parks, and Recreation.</p>
-  <p><b>Hours:</b> 9:00 AM–5:00 PM daily<br><b>Phone:</b> 802.295.6852<br><b>Address:</b> 5966 Woodstock Road, Quechee, VT 05059</p></div>
-  <div class="panel photo t-gorge" style="background-image:url(img/autumn.jpg)" role="img" aria-label="Quechee Gorge Visitor Center in fall">🏞️</div>
-</div></section>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="app.js?v=19"></script>
+<script src="app.js?v=23"></script>
 <script>
 const P=[
- {n:'Quechee Gorge Visitor Center',c:'info',ll:[43.6391,-72.4106],d:'5966 Woodstock Rd · Open daily 9–5 · 802.295.6852'},
- {n:'Hartford Area Chamber Office',c:'info',ll:[43.6393,-72.4112],d:'Mon–Fri 10–4 · 802.295.7900'},
- {n:'Quechee Gorge',c:'see',ll:[43.6414,-72.4096],d:'Vermont\'s deepest gorge. Walk the bridge and trails.'},
- {n:'Quechee State Park',c:'see',ll:[43.6368,-72.4121],d:'Camping, hiking and gorge access.'},
- {n:'Quechee Village Green',c:'event',ll:[43.6469,-72.4173],d:'🎈 Home of the Quechee Balloon Festival.'},
- {n:'Downtown White River Junction',c:'see',ll:[43.6484,-72.3195],d:'Historic downtown, shops, galleries and dining.'}
+ {n:'Hartford Area Chamber & Quechee Gorge Visitor Center',c:'info',ll:[43.63673,-72.40549],d:'5966 Woodstock Rd · Visitor Center daily 9–5 · 802.295.6852<br>Chamber Mon–Fri 10–4 · 802.295.7900'},
+ {n:'Quechee Gorge Bridge',c:'see',ll:[43.6374,-72.4086],d:'Look down into Vermont\'s deepest gorge.'},
+ {n:'Quechee State Park',c:'see',ll:[43.6393,-72.4098],d:'Camping, hiking and gorge access.'},
+ {n:'Quechee Village (Balloon Festival grounds)',c:'event',ll:[43.6467,-72.4197],d:'Home of the Quechee Balloon Festival. Location approximate.'},
+ {n:'Downtown White River Junction',c:'see',ll:[43.6505,-72.3309],d:'Historic downtown, shops, galleries and dining.'}
 ];
 const map=L.map('map',{scrollWheelZoom:false}).setView([43.643,-72.38],11);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors'}).addTo(map);

@@ -33,8 +33,8 @@ const NEXT_BF =new Date('2027-06-18T06:00:00'); // placeholder date until 2027 i
 const NAV=[
  ['about.html','About'],
  ['Membership',[['membership.html#benefits','Member Benefits'],['membership.html#benefits','Member Insurance with VACE'],['membership.html#join','Join Us'],['membership.html#benefits','Downtown Business Association']]],
- ['Visit & Explore',[['visit.html#visitor-center','Quechee Gorge Visitor Center'],['visit.html#explore-map','Quechee State Park Map'],['visit.html#places','Covered Bridges of Windsor County'],['visit.html#places','Area History and Information']]],
- ['Local Events',[['events.html','Community Events'],['events.html#seasonal-series','Seasonal Series'],['events.html#calendar','Full Calendar']],'right'],
+ ['Visit & Explore',[['visit.html#visitor-center','Quechee Gorge Visitor Center'],['visit.html#explore-map','Quechee State Park Map'],['visit.html#covered-bridges','Covered Bridges of Windsor County'],['visit.html#area-history','Area History and Information']]],
+ ['events.html','Events'],
  ['News',[['news.html#newsletter','Chamber Newsletter'],['news.html#guide','The Local\'s Guide']],'right'],
  ['contact.html','Contact']
 ];
@@ -163,7 +163,7 @@ document.addEventListener('click',e=>{
   const blocked=()=>!root.classList.contains('snap')||document.querySelector('dialog[open]');
   addEventListener('wheel',e=>{
     if(blocked()||Math.abs(e.deltaY)<8||e.ctrlKey)return;
-    if(e.target.closest('.leaflet-container,textarea,dialog'))return;
+    if(e.target.closest('textarea,dialog'))return;
     const x=secs[here()];
     if(tall(x)&&scrollY<top(x)+x.scrollHeight-innerHeight+HDR-4&&e.deltaY>0)return;   // still reading a tall section
     if(tall(x)&&e.deltaY<0&&scrollY>top(x)+4)return;

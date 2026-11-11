@@ -400,3 +400,16 @@ nav.main li.has-dd>a{padding-right:14px}
 .stats{display:flex;gap:28px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:18px}
 .stats b{display:block;font:700 1.9rem var(--font-h);color:var(--green)}
 .stats span{font-size:.92rem;color:var(--muted)}
+
+.facts{list-style:none;padding:0;display:grid;gap:10px}
+.facts li{font-size:.98rem;color:var(--muted);padding-left:14px;border-left:3px solid var(--green)}
+.facts b{color:var(--ink)}
+.villages .perk h3{font-size:1.05rem;margin-bottom:2px}.villages .perk b{display:block;font-size:.85rem;color:var(--green);margin-bottom:6px}.villages .perk p{font-size:.9rem}
+
+/* contact: one large map with an address card on top */
+.mapsec .wrap{position:relative}
+.bigmap{height:420px!important}
+html.snap .bigmap{height:calc(100vh - 80px - 64px)!important}
+.mapcard{position:absolute;left:36px;top:36px;z-index:500;background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.25);padding:18px 22px;max-width:300px;font-size:.95rem}
+.mapcard h3{margin-bottom:6px}.mapcard p{color:var(--ink);margin-bottom:8px}
+@media(max-width:700px){.mapcard{position:static;max-width:none;margin-top:12px}}
