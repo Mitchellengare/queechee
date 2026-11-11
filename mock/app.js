@@ -30,7 +30,15 @@ const SEASONS={summer:'☀️ Summer',fall:'🍂 Fall',winter:'❄️ Winter',sp
 const seasonOf=e=>e.season||['winter','winter','spring','spring','spring','summer','summer','summer','fall','fall','fall','winter'][+e.date.slice(5,7)-1];
 const NEXT_BF =new Date('2027-06-18T06:00:00'); // placeholder date until 2027 is announced
 
-const PAGES=[['index.html','Home'],['about.html','About'],['membership.html','Membership'],['visit.html','Visit & Explore'],['events.html','Events'],['contact.html','Contact']];
+const NAV=[
+ ['index.html','Home'],
+ ['about.html','About'],
+ ['Membership',[['membership.html#benefits','Member Benefits'],['membership.html#benefits','Member Insurance with VACE'],['membership.html#join','Join Us'],['membership.html#benefits','Downtown Business Association']]],
+ ['Visit & Explore',[['visit.html#visitor-center','Quechee Gorge Visitor Center'],['visit.html#explore-map','Quechee State Park Map'],['visit.html#places','Covered Bridges of Windsor County'],['visit.html#places','Area History and Information']]],
+ ['Local Events',[['events.html','Community Events'],['balloon-fest.html','Quechee Balloon Festival']],'right'],
+ ['News',[['news.html#newsletter','Chamber Newsletter'],['news.html#guide','The Local\'s Guide']],'right'],
+ ['contact.html','Contact']
+];
 const TICKETS='https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675';
 const cur = location.pathname.split('/').pop()||'index.html';
 const isBF = cur==='balloon-fest.html';
@@ -41,7 +49,10 @@ document.body.insertAdjacentHTML('afterbegin',`
   <a class="logo" href="index.html" aria-label="Hartford Area Chamber of Commerce – home"><img src="img/logo-chamber.jpg" alt="Hartford Area Chamber of Commerce"></a>
   <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
   <nav class="main" id="nav" aria-label="Main"><ul>
-    ${PAGES.map(([h,t])=>`<li><a href="${h}" class="${cur===h?'active':''}${h==='contact.html'?' nav-contact':''}">${h==='contact.html'?'📞 ':''}${t}</a></li>`).join('')}
+    ${NAV.map(([h,t,r])=>{
+      if(Array.isArray(t)){const pg=t.map(c=>c[0].split('#')[0]);const act=pg.includes(cur);
+        return `<li class="has-dd"><a href="${t[0][0]}" class="${act?'active':''}" aria-haspopup="true">${h} <i class="car">▾</i></a><div class="dd ${r==='right'?'dd-right':''}">${t.map(c=>`<a href="${c[0]}">${c[1]}</a>`).join('')}</div></li>`}
+      return `<li><a href="${h}" class="${cur===h?'active':''}${t==='Contact'?' nav-contact':''}">${t==='Contact'?'📞 ':''}${t}</a></li>`}).join('')}
     <li><a href="balloon-fest.html" class="nav-bf ${isBF?'on':''}">🎈 Balloon Festival</a></li>
   </ul></nav>
 </div></header>
@@ -51,7 +62,7 @@ document.body.insertAdjacentHTML('beforeend',`
 <footer class="site"><div class="wrap">
   <div class="grid g4">
     <div><h4>Hartford Area Chamber</h4><p>Supporting business. Welcoming visitors. Strengthening the Hartford area.<br><br>5966 Woodstock Road<br>P.O. Box 823<br>Quechee, VT 05059<br>Mon–Fri 10–4 · 802.295.7900</p></div>
-    <div><h4>Explore</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="membership.html">Membership</a><a href="visit.html">Visit &amp; Explore</a><a href="events.html">Events</a><a href="contact.html">Contact</a></div>
+    <div><h4>Explore</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="membership.html">Membership</a><a href="visit.html">Visit &amp; Explore</a><a href="events.html">Events</a><a href="news.html">News</a><a href="contact.html">Contact</a></div>
     <div><h4>Quechee Balloon Festival</h4><a href="balloon-fest.html">Festival home</a><a href="balloon-fest.html#tickets">Buy tickets</a><a href="balloon-fest.html#info">Getting here</a></div>
     <div><h4>Connect</h4><a href="https://www.facebook.com/hartfordchamber.vt">Facebook</a><a href="https://www.instagram.com/hartfordvt_chamber_commerce/">Instagram</a><a href="mailto:info@hartfordvtchamber.com">info@hartfordvtchamber.com</a><a href="tel:8022956852">Visitor Center 802.295.6852</a></div>
   </div>

@@ -3,19 +3,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link rel="stylesheet" href="styles.css?v=12"></head><body>
+<link rel="stylesheet" href="styles.css?v=13"></head><body>
 <main id="main">
 <section class="page-hero"><div class="wrap"><div class="crumbs"><a href="index.html">Home</a> / Visit &amp; Explore</div>
 <h1>Visit, Explore, and Experience the Hartford Area</h1><p>Gorges, covered bridges, historic downtowns and four seasons of Vermont.</p></div></section>
 
-<section><div class="wrap">
+<section id="explore-map"><div class="wrap">
   <h2>Find your way around</h2><p class="lead" style="margin:8px 0 20px">Tap a pin to see what's there. Filter by type.</p>
   <div class="toolbar" id="mf"><button class="chip on" data-c="all">All</button><button class="chip" data-c="see">See &amp; Do</button><button class="chip" data-c="info">Visitor info</button><button class="chip" data-c="event">Event sites</button></div>
   <div id="map" role="application" aria-label="Interactive map of the Hartford area"></div>
   <p style="font-size:.8rem;color:var(--muted);margin-top:8px">Pin locations are approximate for this mock.</p>
 </div></section>
 
-<section class="alt"><div class="wrap">
+<section class="alt" id="places"><div class="wrap">
   <h2>Places to go</h2>
   <div class="grid g4" style="margin-top:24px">
     <a class="card" href="#" style="text-decoration:none"><div class="thumb t-spring">🛏️</div><div class="body"><h3>Places to Stay</h3><p>Inns, motels and lodging.</p></div></a>
@@ -25,14 +25,14 @@
   </div>
 </div></section>
 
-<section><div class="wrap split">
+<section id="visitor-center"><div class="wrap split">
   <div><h2>Quechee Gorge Visitor Center</h2><p class="lead" style="margin:10px 0">Managed by the Chamber with the Army Corps of Engineers and the Vermont Department of Forests, Parks, and Recreation.</p>
   <p><b>Hours:</b> 9:00 AM–5:00 PM daily<br><b>Phone:</b> 802.295.6852<br><b>Address:</b> 5966 Woodstock Road, Quechee, VT 05059</p></div>
   <div class="panel photo t-gorge" style="background-image:url(img/autumn.jpg)" role="img" aria-label="Quechee Gorge Visitor Center in fall">🏞️</div>
 </div></section>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="app.js?v=12"></script>
+<script src="app.js?v=13"></script>
 <script>
 const P=[
  {n:'Quechee Gorge Visitor Center',c:'info',ll:[43.6391,-72.4106],d:'5966 Woodstock Rd · Open daily 9–5 · 802.295.6852'},

@@ -317,3 +317,33 @@ html.snap .bf-band h2{font-size:clamp(1.8rem,3.2vw,2.6rem)}
 .bf-hero .count b,.bf-band .count b,html.snap .bf-band .count b{font-size:1.9rem}
 .bf-hero .count div{min-width:78px;padding:10px 12px}
 .eyebrow{font-size:.8rem}
+
+/* ---- dark header, nav on the right, dropdowns ---- */
+header.site{background:#202b27;border-bottom:3px solid var(--orange);backdrop-filter:none}
+header.site .wrap{max-width:1280px;justify-content:space-between}
+nav.main{margin-left:auto}
+nav.main ul{justify-content:flex-end;gap:4px}
+nav.main a{color:#e9f0ec}
+nav.main a:hover{background:rgba(255,255,255,.1)}
+nav.main a.active{color:#ffb27a;box-shadow:inset 0 -3px 0 var(--orange)}
+nav.main a.nav-contact{border-color:rgba(255,255,255,.65);color:#fff}
+nav.main a.nav-contact:hover,nav.main a.nav-contact.active{background:#fff;color:#202b27;box-shadow:none}
+nav.main a.nav-bf{margin-left:8px}
+.menu-btn{color:#fff}
+nav.main li{position:relative}
+.car{font-style:normal;font-size:.7em;opacity:.8}
+.dd{position:absolute;top:100%;left:0;min-width:270px;background:#fff;border-radius:12px;box-shadow:0 14px 40px rgba(0,0,0,.28);padding:8px;display:none;z-index:80;margin-top:2px}
+.dd::before{content:'';position:absolute;left:0;right:0;top:-12px;height:12px}
+.dd.dd-right{left:auto;right:0}
+nav.main li.has-dd:hover>.dd,nav.main li.has-dd:focus-within>.dd{display:block}
+nav.main .dd a{color:var(--ink);padding:10px 14px;border-radius:8px;white-space:nowrap;font-weight:500;box-shadow:none}
+nav.main .dd a:hover{background:var(--sky);color:var(--green-d)}
+@media(max-width:900px){
+  nav.main{position:absolute;top:80px;left:0;right:0;background:#202b27;border-bottom:3px solid var(--orange);margin-left:0}
+  nav.main ul{align-items:stretch}
+  .dd{position:static;display:block;background:transparent;box-shadow:none;padding:0 0 0 14px;margin:0;min-width:0}
+  .dd::before{display:none}
+  nav.main .dd a{color:#cfdcd5;padding:6px 12px;font-size:.9rem}
+  nav.main .dd a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .car{display:none}
+}
