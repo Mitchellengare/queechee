@@ -1,7 +1,7 @@
 :root{
-  --green:#1f4d3a; --green-d:#143427; --sky:#e8f1f5; --cream:#fbf8f2;
+  --green:#2d7a3a; --green-d:#1b4a26; --sky:#e6f2f8; --cream:#fbf8f2;
   --orange:#e8702a; --orange-d:#c85a18; --ink:#1d2a26; --muted:#5d6b66;
-  --line:#e2dccf; --chamber:#1f4d3a; --community:#2f6f9f; --white:#fff;
+  --line:#e2dccf; --chamber:#2d7a3a; --community:#2f6f9f; --white:#fff;
   --r:14px; --shadow:0 6px 24px rgba(20,52,39,.12);
   --font-h:'Poppins',system-ui,sans-serif; --font-b:'Poppins',system-ui,sans-serif;
 }
@@ -28,7 +28,7 @@ section{padding:64px 0}
 /* header */
 .skip{position:absolute;left:-999px}.skip:focus{left:10px;top:10px;background:#fff;padding:8px;z-index:99}
 .topbar{background:var(--green-d);color:#dfeee6;font-size:.85rem}
-.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:8px 20px;flex-wrap:wrap}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:7px 20px;flex-wrap:wrap}
 .topbar a{text-decoration:none}.topbar a:hover{text-decoration:underline}
 header.site{position:sticky;top:0;z-index:50;background:rgba(251,248,242,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
@@ -185,3 +185,22 @@ table.sched{width:100%;border-collapse:collapse;background:#fff;border-radius:va
 .ticketbar .btn{padding:10px 26px}
 nav.main a.nav-buy{background:var(--green);color:#fff;font-weight:700;margin-left:4px}
 nav.main a.nav-buy:hover{background:var(--green-d)}
+
+/* ---- header: logo-matched, slim, contact always visible ---- */
+.topbar{font-size:.82rem}
+.topbar a{display:inline-block;margin-right:16px}.topbar .tb-right a{margin:0 0 0 16px}
+.logo img{height:52px;width:auto;border-radius:8px;display:block}
+header.site .wrap{height:76px}
+nav.main a.nav-bf.on{box-shadow:0 0 0 3px rgba(232,112,42,.3)}
+@media(max-width:900px){nav.main{top:76px}.logo img{height:42px}.topbar .tb-right{display:none}.topbar a{margin-right:12px}}
+.subbar{position:sticky;top:76px;z-index:49;background:#fff;border-bottom:3px solid var(--orange);box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.subbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:8px 20px;flex-wrap:wrap}
+.sub-brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1rem var(--font-h);color:var(--green-d);line-height:1.15}
+.sub-brand img{width:46px;height:46px}.sub-brand small{display:block;font:500 .7rem var(--font-b);color:var(--muted)}
+.subbar nav{display:flex;gap:2px;flex-wrap:wrap}.subbar nav a{padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:500;font-size:.9rem}.subbar nav a:hover{background:var(--sky)}
+.subbar .btn{padding:10px 22px}
+@media(max-width:900px){.subbar{top:76px}.subbar nav{display:none}}
+.contact-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px}.contact-card h3{margin-bottom:8px}.contact-card p{color:var(--muted)}
+
+/* the festival sub-bar already keeps Buy Tickets in view on desktop; the bottom bar is for phones */
+@media(min-width:901px){.ticketbar{display:none}}

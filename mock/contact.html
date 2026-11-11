@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact · Hartford Area Chamber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="styles.css"></head><body>
+<main id="main">
+<div class="page-hero"><div class="wrap"><div class="crumbs"><a href="index.html">Home</a> / Contact</div>
+<h1>Contact Us</h1><p>Questions about membership, events or visiting? We'd love to hear from you.</p></div></div>
+<section><div class="wrap grid g2" style="align-items:start">
+  <div style="display:grid;gap:16px">
+    <div class="contact-card"><h3>🏢 Hartford Area Chamber of Commerce</h3><p>5966 Woodstock Road, P.O. Box 823<br>Quechee, VT 05059-0823<br>Mon–Fri 10:00 AM–4:00 PM<br><a href="tel:8022957900"><b>802.295.7900</b></a> · <a href="mailto:info@hartfordvtchamber.com">info@hartfordvtchamber.com</a></p></div>
+    <div class="contact-card"><h3>🏞️ Quechee Gorge Visitor Center</h3><p>Same address<br>Open every day 9:00 AM–5:00 PM<br><a href="tel:8022956852"><b>802.295.6852</b></a></p></div>
+    <div class="contact-card"><h3>🎈 Quechee Balloon Festival</h3><p>Managed by the Chamber. Questions about tickets or the festival: <a href="tel:8022957900">802.295.7900</a> · <a href="mailto:info@hartfordvtchamber.com">info@hartfordvtchamber.com</a></p></div>
+    <p><a class="btn btn-green" href="https://www.facebook.com/hartfordchamber.vt">Facebook</a> <a class="btn btn-green" href="https://www.instagram.com/hartfordvt_chamber_commerce/">Instagram</a></p>
+  </div>
+  <div class="contact-card"><h3>Send us a message</h3>
+    <form onsubmit="event.preventDefault();this.innerHTML='<h3>Thank you for contacting us.</h3><p>We will get back to you soon.</p>'" style="margin-top:12px">
+      <input placeholder="Name" required aria-label="Name"><input type="email" placeholder="Email" required aria-label="Email"><input placeholder="Phone" aria-label="Phone">
+      <textarea rows="5" placeholder="Message" required aria-label="Message"></textarea><button class="btn btn-primary">Send message</button></form>
+  </div>
+</div></section>
+<section style="padding-top:0"><div class="wrap"><div id="map" style="height:340px"></div></div></section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="app.js"></script>
+<script>
+const m=L.map('map',{scrollWheelZoom:false}).setView([43.6391,-72.4106],14);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors'}).addTo(m);
+L.marker([43.6391,-72.4106]).addTo(m).bindPopup('<b>Chamber &amp; Visitor Center</b><br>5966 Woodstock Road (approx.)').openPopup();
+</script></body></html>

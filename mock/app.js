@@ -30,7 +30,7 @@ const SEASONS={summer:'☀️ Summer',fall:'🍂 Fall',winter:'❄️ Winter',sp
 const seasonOf=e=>e.season||['winter','winter','spring','spring','spring','summer','summer','summer','fall','fall','fall','winter'][+e.date.slice(5,7)-1];
 const NEXT_BF =new Date('2027-06-18T06:00:00'); // placeholder date until 2027 is announced
 
-const PAGES=[['index.html','Home'],['about.html','About'],['membership.html','Membership'],['visit.html','Visit & Explore'],['events.html','Events']];
+const PAGES=[['index.html','Home'],['about.html','About'],['membership.html','Membership'],['visit.html','Visit & Explore'],['events.html','Events'],['contact.html','Contact']];
 const TICKETS='https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675';
 const cur = location.pathname.split('/').pop()||'index.html';
 const isBF = cur==='balloon-fest.html';
@@ -39,26 +39,38 @@ document.body.insertAdjacentHTML('afterbegin',`
 <div class="mock-note">Class redesign mock. Sample events and imagery are placeholders. Not the official site.</div>
 <a class="skip" href="#main">Skip to content</a>
 <div class="topbar"><div class="wrap">
-  <span>📍 5966 Woodstock Road, Quechee, VT 05059 · Visitor Center open daily 9–5</span>
-  <span><a href="tel:8022957900">802.295.7900</a> · <a href="mailto:info@hartfordvtchamber.com">info@hartfordvtchamber.com</a></span>
+  <span class="tb-contact">
+    <a href="tel:8022957900">📞 Chamber 802.295.7900</a>
+    <a href="tel:8022956852">Visitor Center 802.295.6852</a>
+    <a href="mailto:info@hartfordvtchamber.com">✉️ info@hartfordvtchamber.com</a>
+  </span>
+  <span class="tb-right">
+    <a href="contact.html">📍 5966 Woodstock Rd, Quechee VT</a>
+    <a href="https://www.facebook.com/hartfordchamber.vt" aria-label="Facebook">Facebook</a>
+    <a href="https://www.instagram.com/hartfordvt_chamber_commerce/" aria-label="Instagram">Instagram</a>
+  </span>
 </div></div>
 <header class="site"><div class="wrap">
-  <a class="logo" href="index.html" aria-label="Hartford Area Chamber of Commerce – home"><span class="logo-mark">🏔️</span><span>Hartford Area<small>Chamber of Commerce</small></span></a>
+  <a class="logo" href="index.html" aria-label="Hartford Area Chamber of Commerce – home"><img src="img/logo-chamber.jpg" alt="Hartford Area Chamber of Commerce"></a>
   <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
   <nav class="main" id="nav" aria-label="Main"><ul>
     ${PAGES.map(([h,t])=>`<li><a href="${h}" class="${cur===h?'active':''}">${t}</a></li>`).join('')}
-    <li><a href="balloon-fest.html" class="nav-bf">🎈 Balloon Festival</a></li>
-    ${isBF?`<li><a class="nav-buy" href="${TICKETS}">🎟️ Buy Tickets</a></li>`:''}
+    <li><a href="balloon-fest.html" class="nav-bf ${isBF?'on':''}">🎈 Balloon Festival</a></li>
   </ul></nav>
-</div></header>`);
+</div></header>
+${isBF?`<div class="subbar"><div class="wrap">
+  <a class="sub-brand" href="balloon-fest.html"><img src="img/logo-qbf.png" alt="Quechee Hot Air Balloon Festival"><span>Quechee Balloon Festival<small>Managed by the Hartford Area Chamber</small></span></a>
+  <nav aria-label="Festival"><a href="#tickets">Tickets</a><a href="#info">Schedule</a><a href="#gallery">Gallery</a><a href="#alerts">Launch alerts</a><a href="#info">Getting here</a><a href="#involved">Get involved</a></nav>
+  <a class="btn btn-primary" href="${TICKETS}">🎟️ Buy Tickets</a>
+</div></div>`:''}`);
 
 document.body.insertAdjacentHTML('beforeend',`
 <footer class="site"><div class="wrap">
   <div class="grid g4">
-    <div><h4>Hartford Area Chamber</h4><p>Supporting business. Welcoming visitors. Strengthening the Hartford area.<br><br>5966 Woodstock Road<br>P.O. Box 823<br>Quechee, VT 05059</p></div>
-    <div><h4>Explore</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="membership.html">Membership</a><a href="visit.html">Visit &amp; Explore</a><a href="events.html">Events</a></div>
-    <div><h4>Quechee Balloon Festival</h4><a href="balloon-fest.html">Festival home</a><a href="balloon-fest.html#tickets">Tickets</a><a href="balloon-fest.html#info">Getting here</a></div>
-    <div><h4>Connect</h4><a href="https://www.facebook.com/hartfordchamber.vt">Facebook</a><a href="https://www.instagram.com/hartfordvt_chamber_commerce/">Instagram</a><a href="mailto:info@hartfordvtchamber.com">Email us</a></div>
+    <div><h4>Hartford Area Chamber</h4><p>Supporting business. Welcoming visitors. Strengthening the Hartford area.<br><br>5966 Woodstock Road<br>P.O. Box 823<br>Quechee, VT 05059<br>Mon–Fri 10–4 · 802.295.7900</p></div>
+    <div><h4>Explore</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="membership.html">Membership</a><a href="visit.html">Visit &amp; Explore</a><a href="events.html">Events</a><a href="contact.html">Contact</a></div>
+    <div><h4>Quechee Balloon Festival</h4><a href="balloon-fest.html">Festival home</a><a href="balloon-fest.html#tickets">Buy tickets</a><a href="balloon-fest.html#info">Getting here</a></div>
+    <div><h4>Connect</h4><a href="https://www.facebook.com/hartfordchamber.vt">Facebook</a><a href="https://www.instagram.com/hartfordvt_chamber_commerce/">Instagram</a><a href="mailto:info@hartfordvtchamber.com">info@hartfordvtchamber.com</a><a href="tel:8022956852">Visitor Center 802.295.6852</a></div>
   </div>
   <div class="legal"><span>© 2026 Hartford Area Chamber of Commerce (mock redesign)</span><span>Presented with community partners</span></div>
 </div></footer>`);

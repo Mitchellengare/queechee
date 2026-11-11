@@ -95,7 +95,7 @@ function reviewsHTML(e){
   <select name="s" aria-label="Rating" style="padding:12px;border-radius:10px;border:1.5px solid var(--line);font:1rem var(--font-b)"><option value="5">★★★★★ Loved it</option><option value="4">★★★★ Great</option><option value="3">★★★ Good</option><option value="2">★★ Fair</option><option value="1">★ Poor</option></select>
   <textarea name="t" rows="3" placeholder="How was it?" required aria-label="Your review"></textarea>
   <input type="file" name="p" accept="image/*" multiple aria-label="Add photos">
-  <small>Reviews are checked by the Chamber before they appear publicly. Have a concern? <a href="index.html#Contact">Tell us privately</a>.</small>
+  <small>Reviews are checked by the Chamber before they appear publicly. Have a concern? <a href="contact.html">Tell us privately</a>.</small>
   <button class="btn btn-primary">Submit review</button></form>
  <div style="display:grid;gap:10px">${list.map(card).join('')}</div>`}
 function addRv(ev,id){ev.preventDefault();const f=ev.target,photos=[...f.p.files].slice(0,4).map(x=>URL.createObjectURL(x));
