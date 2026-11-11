@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Visit &amp; Explore · Hartford Area Chamber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="styles.css"></head><body>
+<main id="main">
+<div class="page-hero"><div class="wrap"><div class="crumbs"><a href="index.html">Home</a> / Visit &amp; Explore</div>
+<h1>Visit, Explore, and Experience the Hartford Area</h1><p>Gorges, covered bridges, historic downtowns and four seasons of Vermont.</p></div></div>
+
+<section><div class="wrap">
+  <h2>Find your way around</h2><p class="lead" style="margin:8px 0 20px">Tap a pin to see what's there. Filter by type.</p>
+  <div class="toolbar" id="mf"><button class="chip on" data-c="all">All</button><button class="chip" data-c="see">See &amp; Do</button><button class="chip" data-c="info">Visitor info</button><button class="chip" data-c="event">Event sites</button></div>
+  <div id="map" role="application" aria-label="Interactive map of the Hartford area"></div>
+  <p style="font-size:.8rem;color:var(--muted);margin-top:8px">Pin locations are approximate for this mock.</p>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>Places to go</h2>
+  <div class="grid g4" style="margin-top:24px">
+    <a class="card" href="#" style="text-decoration:none"><div class="thumb t-spring">🛏️</div><div class="body"><h3>Places to Stay</h3><p>Inns, motels and lodging.</p></div></a>
+    <a class="card" href="#" style="text-decoration:none"><div class="thumb t-town">🛍️</div><div class="body"><h3>Shopping</h3><p>Local shops and makers.</p></div></a>
+    <a class="card" href="#" style="text-decoration:none"><div class="thumb t-gorge">🥾</div><div class="body"><h3>Recreation</h3><p>Trails, parks and water.</p></div></a>
+    <a class="card" href="#" style="text-decoration:none"><div class="thumb t-bridge">🍽️</div><div class="body"><h3>Eat &amp; Drink</h3><p>Farm-to-table and cafes.</p></div></a>
+  </div>
+</div></section>
+
+<section><div class="wrap split">
+  <div><h2>Quechee Gorge Visitor Center</h2><p class="lead" style="margin:10px 0">Managed by the Chamber with the Army Corps of Engineers and the Vermont Department of Forests, Parks, and Recreation.</p>
+  <p><b>Hours:</b> 9:00 AM–5:00 PM daily<br><b>Phone:</b> 802.295.6852<br><b>Address:</b> 5966 Woodstock Road, Quechee, VT 05059</p></div>
+  <div class="panel t-gorge">🏞️</div>
+</div></section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="app.js"></script>
+<script>
+const P=[
+ {n:'Quechee Gorge Visitor Center',c:'info',ll:[43.6391,-72.4106],d:'5966 Woodstock Rd · Open daily 9–5 · 802.295.6852'},
+ {n:'Hartford Area Chamber Office',c:'info',ll:[43.6393,-72.4112],d:'Mon–Fri 10–4 · 802.295.7900'},
+ {n:'Quechee Gorge',c:'see',ll:[43.6414,-72.4096],d:'Vermont\'s deepest gorge. Walk the bridge and trails.'},
+ {n:'Quechee State Park',c:'see',ll:[43.6368,-72.4121],d:'Camping, hiking and gorge access.'},
+ {n:'Quechee Village Green',c:'event',ll:[43.6469,-72.4173],d:'🎈 Home of the Quechee Balloon Festival.'},
+ {n:'Downtown White River Junction',c:'see',ll:[43.6484,-72.3195],d:'Historic downtown, shops, galleries and dining.'}
+];
+const map=L.map('map',{scrollWheelZoom:false}).setView([43.643,-72.38],11);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors'}).addTo(map);
+const layer=L.layerGroup().addTo(map);
+function draw(c){layer.clearLayers();P.filter(p=>c==='all'||p.c===c).forEach(p=>L.marker(p.ll).bindPopup(`<b>${p.n}</b><br>${p.d}<br><a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${p.ll}">Directions</a>`).addTo(layer))}
+draw('all');
+mf.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;[...mf.children].forEach(x=>x.classList.toggle('on',x===b));draw(b.dataset.c)};
+</script></body></html>

@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About · Hartford Area Chamber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"></head><body>
+<main id="main">
+<div class="page-hero"><div class="wrap"><div class="crumbs"><a href="index.html">Home</a> / About</div><h1>About Us</h1><p>A stronger Chamber for a stronger community.</p></div></div>
+<section><div class="wrap grid g2">
+  <div class="perk"><h2>Our Mission</h2><p style="font-size:1.05rem">The Hartford Area Chamber of Commerce is committed to fostering a thriving economic environment where local businesses and the community prosper, through value-added services and programs that help businesses succeed in Hartford, Vermont.</p></div>
+  <div class="perk"><h2>Our Vision</h2><p style="font-size:1.05rem">We proudly serve the five villages of Hartford: Quechee, White River Junction, Hartford Village, West Hartford, and Wilder. Membership extends to Hanover, Norwich, Woodstock, Hartland, West Lebanon, and Windsor County.</p></div>
+</div></section>
+<section class="alt"><div class="wrap">
+  <div class="center"><h2>Board of Directors</h2><p class="lead">Elected annually from member businesses.</p></div>
+  <div class="grid g4 team" style="margin-top:32px" id="team"></div>
+  <div class="center" style="margin-top:36px"><h3>Executive Director</h3><div class="avatar" style="margin-top:12px">HW</div><b>Havah Armstrong Walther</b></div>
+</div></section>
+<section class="center"><div class="wrap"><h2>Want to get involved?</h2><p style="margin:12px 0 20px">Request information or reach out directly.</p>
+<a class="btn btn-primary" href="membership.html">Request information</a> <a class="btn btn-green" href="index.html#Contact">Contact us</a></div></section>
+</main>
+<script src="app.js"></script>
+<script>
+const T=[['Amanda Moore','Chair · HCRS'],['Crystal Rogers','Treasurer · Dead River Company'],['Jennifer Eastman','Secretary · Mascoma Bank'],['Cortney Keene','Keene Perspectives'],['Jennifer Baxter','UVAC'],['Andrea Brown','Claremont Savings Bank'],['Jolynn Whitten','Board Member'],['John Haverstock','Ex Officio · Town of Hartford']];
+document.getElementById('team').innerHTML=T.map(([n,r])=>`<div class="perk"><div class="avatar">${n.split(' ').map(x=>x[0]).join('')}</div><b>${n}</b><p>${r}</p></div>`).join('');
+</script></body></html>

@@ -1,0 +1,63 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quechee Balloon Festival</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="styles.css">
+<style>.bf-hero{background:linear-gradient(180deg,rgba(20,52,39,.2),rgba(20,52,39,.85)),linear-gradient(160deg,#f4a261,#e8702a 40%,#2f6f9f);color:#fff;padding:100px 0 80px;text-align:center}
+.bf-hero h1{color:#fff}.bf-hero .count{justify-content:center;margin:28px 0}.bf-hero .count b{font-size:2.6rem}.bf-hero .count div{min-width:92px;padding:14px}</style></head><body>
+<main id="main">
+<section class="bf-hero"><div class="wrap">
+  <p class="eyebrow" style="color:#fff3e6">46th Annual · Father's Day weekend</p>
+  <h1>Quechee Hot Air Balloon Festival</h1>
+  <p style="font-size:1.2rem;margin-top:12px">New England's most colorful Father's Day tradition for more than 45 years.</p>
+  <div class="count" aria-label="Countdown to the next festival"></div>
+  <p style="opacity:.9;margin-bottom:22px">Balloon launches at 6:00 AM &amp; 6:00 PM (weather permitting) · 2027 dates shown are placeholders</p>
+  <a class="btn btn-primary" href="#tickets">Buy Tickets</a> <a class="btn btn-ghost" href="#info">Plan your ascent</a>
+</div></section>
+
+<section><div class="wrap">
+  <div class="center"><p class="eyebrow">Hosted by the Chamber</p><h2>Plan Your Ascent</h2><p class="lead">Hot air balloons, live music, family-friendly shows, food vendors and unforgettable views under blue Vermont skies. “No better view of the beautiful Vermont countryside.” — Yankee Magazine</p></div>
+  <div class="grid g4" style="margin-top:32px">
+    <a class="perk" href="#tickets" style="text-decoration:none"><div class="ico">🎟️</div><h3>Tickets</h3><p>Weekend passes and adventure rides.</p></a>
+    <a class="perk" href="#info" style="text-decoration:none"><div class="ico">🗓️</div><h3>Schedule</h3><p>Hours for all three days.</p></a>
+    <a class="perk" href="#info" style="text-decoration:none"><div class="ico">📍</div><h3>Getting Here</h3><p>Village Green, Quechee.</p></a>
+    <a class="perk" href="#involved" style="text-decoration:none"><div class="ico">🤝</div><h3>Get Involved</h3><p>Sponsor, volunteer or vend.</p></a>
+  </div>
+</div></section>
+
+<section class="alt" id="tickets"><div class="wrap">
+  <h2>Tickets</h2>
+  <div class="grid g2" style="margin-top:20px">
+    <div class="perk"><div class="ico">🎪</div><h3>Weekend Passes</h3><p>Full festival access all weekend. Advance online purchase is discounted. Children under 12 get discounted admission.</p></div>
+    <div class="perk"><div class="ico">🎈</div><h3>Adventure Ride Tickets</h3><p>Limited and tend to sell out quickly. Released in waves, so sign up for updates.</p></div>
+  </div>
+  <p style="margin-top:18px;color:var(--muted)"><b>Why no day passes?</b> The grounds are open rain or shine and launches depend on weather. Youth in foster care and participating schools receive passes.</p>
+  <p style="margin-top:20px"><a class="btn btn-primary" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">Buy Tickets</a>
+  <a class="btn btn-green" href="#">Get ticket-drop alerts</a></p>
+</div></section>
+
+<section id="info"><div class="wrap">
+  <h2>Festival Information</h2>
+  <div class="grid g2" style="margin-top:20px">
+    <div>
+      <table class="sched"><tr><th>Day</th><th>Hours</th></tr>
+      <tr><td>Friday</td><td>3:00 PM – 9:00 PM</td></tr><tr><td>Saturday</td><td>5:45 AM – 9:00 PM</td></tr><tr><td>Sunday</td><td>5:45 AM – 8:00 PM</td></tr></table>
+      <p style="margin:16px 0"><b>Where:</b> Village Green, Quechee, VT 05059</p>
+      <h3 style="margin-bottom:10px">Festival rules</h3>
+      <div class="rules"><span class="rule">🐕 No pets (service animals welcome)</span><span class="rule">🍺 No outside alcohol</span><span class="rule">🛸 No drones</span></div>
+    </div>
+    <div id="map" class="map"></div>
+  </div>
+</div></section>
+
+<section class="dark" id="involved"><div class="wrap center"><h2>Be Part of the Tradition</h2><p class="lead" style="color:#cfe2d8">Sponsor, volunteer or become a vendor.</p>
+<p style="margin-top:22px"><a class="btn btn-primary" href="#">Sponsor</a> <a class="btn btn-ghost" style="color:#fff" href="#">Volunteer</a> <a class="btn btn-ghost" style="color:#fff" href="#">Become a vendor</a></p></div></section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="app.js"></script>
+<script>
+const m=L.map('map',{scrollWheelZoom:false}).setView([43.6469,-72.4173],14);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors'}).addTo(m);
+L.marker([43.6469,-72.4173]).addTo(m).bindPopup('<b>Quechee Village Green</b><br>Balloon Festival grounds (approx.)').openPopup();
+</script></body></html>
