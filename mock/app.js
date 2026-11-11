@@ -36,33 +36,16 @@ const cur = location.pathname.split('/').pop()||'index.html';
 const isBF = cur==='balloon-fest.html';
 
 document.body.insertAdjacentHTML('afterbegin',`
-<div class="mock-note">Class redesign mock. Sample events and imagery are placeholders. Not the official site.</div>
 <a class="skip" href="#main">Skip to content</a>
-<div class="topbar"><div class="wrap">
-  <span class="tb-contact">
-    <a href="tel:8022957900">📞 Chamber 802.295.7900</a>
-    <a href="tel:8022956852">Visitor Center 802.295.6852</a>
-    <a href="mailto:info@hartfordvtchamber.com">✉️ info@hartfordvtchamber.com</a>
-  </span>
-  <span class="tb-right">
-    <a href="contact.html">📍 5966 Woodstock Rd, Quechee VT</a>
-    <a href="https://www.facebook.com/hartfordchamber.vt" aria-label="Facebook">Facebook</a>
-    <a href="https://www.instagram.com/hartfordvt_chamber_commerce/" aria-label="Instagram">Instagram</a>
-  </span>
-</div></div>
 <header class="site"><div class="wrap">
   <a class="logo" href="index.html" aria-label="Hartford Area Chamber of Commerce – home"><img src="img/logo-chamber.jpg" alt="Hartford Area Chamber of Commerce"></a>
   <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
   <nav class="main" id="nav" aria-label="Main"><ul>
-    ${PAGES.map(([h,t])=>`<li><a href="${h}" class="${cur===h?'active':''}">${t}</a></li>`).join('')}
+    ${PAGES.map(([h,t])=>`<li><a href="${h}" class="${cur===h?'active':''}${h==='contact.html'?' nav-contact':''}">${h==='contact.html'?'📞 ':''}${t}</a></li>`).join('')}
     <li><a href="balloon-fest.html" class="nav-bf ${isBF?'on':''}">🎈 Balloon Festival</a></li>
   </ul></nav>
 </div></header>
-${isBF?`<div class="subbar"><div class="wrap">
-  <a class="sub-brand" href="balloon-fest.html"><img src="img/logo-qbf.png" alt="Quechee Hot Air Balloon Festival"><span>Quechee Balloon Festival<small>Managed by the Hartford Area Chamber</small></span></a>
-  <nav aria-label="Festival"><a href="#tickets">Tickets</a><a href="#info">Schedule</a><a href="#gallery">Gallery</a><a href="#alerts">Launch alerts</a><a href="#info">Getting here</a><a href="#involved">Get involved</a></nav>
-  <a class="btn btn-primary" href="${TICKETS}">🎟️ Buy Tickets</a>
-</div></div>`:''}`);
+`);
 
 document.body.insertAdjacentHTML('beforeend',`
 <footer class="site"><div class="wrap">
@@ -72,7 +55,7 @@ document.body.insertAdjacentHTML('beforeend',`
     <div><h4>Quechee Balloon Festival</h4><a href="balloon-fest.html">Festival home</a><a href="balloon-fest.html#tickets">Buy tickets</a><a href="balloon-fest.html#info">Getting here</a></div>
     <div><h4>Connect</h4><a href="https://www.facebook.com/hartfordchamber.vt">Facebook</a><a href="https://www.instagram.com/hartfordvt_chamber_commerce/">Instagram</a><a href="mailto:info@hartfordvtchamber.com">info@hartfordvtchamber.com</a><a href="tel:8022956852">Visitor Center 802.295.6852</a></div>
   </div>
-  <div class="legal"><span>© 2026 Hartford Area Chamber of Commerce (mock redesign)</span><span>Presented with community partners</span></div>
+  <div class="legal"><span>© 2026 Hartford Area Chamber of Commerce · Class redesign mock, sample events and imagery are placeholders</span><span>Presented with community partners</span></div>
 </div></footer>`);
 
 /* helpers */
@@ -85,3 +68,54 @@ function countdown(el){
   tick();setInterval(tick,1000);
 }
 document.querySelectorAll('.count').forEach(countdown);
+
+
+/* ---- Buy Tickets pop-up: blurred, tinted backdrop; every Buy Tickets link opens it ---- */
+function openTickets(){
+  document.querySelectorAll('dialog[open]').forEach(d=>d.close());
+  let d=document.getElementById('tix');
+  if(!d){d=document.createElement('dialog');d.id='tix';d.dataset.tone='t-sky';document.body.appendChild(d);
+    d.addEventListener('click',e=>{if(e.target===d)d.close()})}
+  const alerts=isBF?'#alerts':'balloon-fest.html#alerts';
+  d.innerHTML=`<button class="x" aria-label="Close" onclick="document.getElementById('tix').close()">✕</button>
+  <div class="thumb photo" style="background-image:url(img/qbf-c.jpg);height:150px"></div>
+  <div class="inner">
+    <span class="badge b-chamber">Hosted by the Chamber</span>
+    <h3>Quechee Balloon Festival tickets</h3>
+    <div class="grid" style="gap:10px">
+      <div class="rv" style="border:2px solid var(--orange);background:#fff"><b>🎪 Weekend Pass</b><p>Full festival access all weekend. Discounted when you buy online in advance. Children under 12 get discounted admission.</p></div>
+      <div class="rv" style="background:#fff;border:2px solid var(--line)"><b>🎈 Adventure Ride</b><p>Go up in a hot air balloon. Limited, and they sell out quickly. Released in waves.</p></div>
+    </div>
+    <small style="color:var(--muted)">2027 dates and prices aren't announced yet. Checkout opens on the Chamber's secure FareHarbor booking page.</small>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn btn-primary" data-direct="1" target="_blank" rel="noopener" href="${TICKETS}">Continue to checkout</a>
+      <a class="btn btn-ghost" style="color:var(--green)" href="${alerts}" onclick="document.getElementById('tix').close()">Get text alerts</a>
+    </div>
+  </div>`;
+  d.showModal();d.scrollTop=0;
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href^="https://fareharbor.com"]');
+  if(!a||a.dataset.direct||e.metaKey||e.ctrlKey||e.shiftKey)return;
+  e.preventDefault();openTickets();
+});
+
+
+/* ---- scroll one full-screen section at a time (every page) ---- */
+(function(){
+  const secs=[...document.querySelectorAll('main>section')];
+  if(!secs.length)return;
+  const root=document.documentElement,mq=matchMedia('(min-width:801px)'),rm=matchMedia('(prefers-reduced-motion:reduce)');
+  const sync=()=>root.classList.toggle('snap',mq.matches&&!rm.matches);
+  sync();mq.addEventListener('change',sync);
+  secs.forEach((x,i)=>{if(!x.id)x.id='sec'+i;
+    x.dataset.label=x.dataset.label||(x.classList.contains('page-hero')||x.classList.contains('hero')||x.classList.contains('bf-hero')?'Top':(x.querySelector('h2,h1')||{textContent:'Section '+(i+1)}).textContent.trim().slice(0,26))});
+  const dots=document.createElement('nav');dots.className='dots';dots.setAttribute('aria-label','Sections');
+  dots.innerHTML=secs.map(x=>`<a href="#${x.id}" aria-label="${x.dataset.label}"><span>${x.dataset.label}</span></a>`).join('');
+  document.body.appendChild(dots);
+  secs.forEach(x=>[...x.querySelectorAll(':scope>.wrap>*')].forEach((el,i)=>{el.classList.add('reveal');el.style.transitionDelay=(i*80)+'ms'}));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+    e.target.querySelectorAll('.reveal').forEach(r=>r.classList.add('in'));
+    dots.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}}),{threshold:.2});
+  secs.forEach(x=>io.observe(x));
+})();
