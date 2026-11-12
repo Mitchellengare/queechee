@@ -445,3 +445,11 @@ dialog#tix .opt{padding:7px 14px}
 
 dialog#tix .inner{padding:12px 20px 14px;gap:6px}
 dialog#tix .opts{gap:6px}
+.bridges .perk h3,.villages .perk h3{font-size:1.1rem;margin-bottom:4px}
+.bridges .perk p{font-size:.92rem;margin-top:8px}
+.bridges .perk a{color:var(--green)}
+.bridges .perk,.villages .perk{padding:0;overflow:hidden}
+.bridges .perk>:not(.ph),.villages .perk>:not(.ph){margin-left:20px;margin-right:20px}
+.bridges .perk h3,.villages .perk h3{margin-top:16px}
+.bridges .perk>:last-child,.villages .perk>:last-child{margin-bottom:20px}
+.perk .ph{height:clamp(110px,19vh,190px);background-size:cover}
