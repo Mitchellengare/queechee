@@ -31,12 +31,13 @@ const seasonOf=e=>e.season||['winter','winter','spring','spring','spring','summe
 const NEXT_BF =new Date('2027-06-18T06:00:00'); // placeholder date until 2027 is announced
 
 const NAV=[
+ ['index.html','Home'],
  ['about.html','About'],
  ['Membership',[['membership.html#benefits','Member Benefits'],['membership.html#benefits','Member Insurance with VACE'],['membership.html#join','Join Us'],['membership.html#benefits','Downtown Business Association']]],
  ['Visit & Explore',[['visit.html#visitor-center','Quechee Gorge Visitor Center'],['visit.html#explore-map','Quechee State Park Map'],['visit.html#covered-bridges','Covered Bridges of Windsor County'],['visit.html#area-history','Area History and Information']]],
  ['events.html','Events'],
  ['News',[['news.html#newsletter','Chamber Newsletter'],['news.html#guide','The Local\'s Guide']],'right'],
- ['contact.html','Contact']
+ ['index.html#Contact','Contact']
 ];
 const TICKETS='https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675';
 const cur = location.pathname.split('/').pop()||'index.html';
@@ -60,8 +61,8 @@ document.body.insertAdjacentHTML('afterbegin',`
 document.body.insertAdjacentHTML('beforeend',`
 <footer class="site"><div class="wrap">
   <div class="grid g4">
-    <div><h4>Hartford Area Chamber</h4><p>Supporting business. Welcoming visitors. Strengthening the Hartford area.<br><br>5966 Woodstock Road<br>P.O. Box 823<br>Quechee, VT 05059<br>Mon–Fri 10–4 · 802.295.7900</p></div>
-    <div><h4>Explore</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="membership.html">Membership</a><a href="visit.html">Visit &amp; Explore</a><a href="events.html">Events</a><a href="news.html">News</a><a href="contact.html">Contact</a></div>
+    <div><h4>Hartford Area Chamber</h4><p>Supporting business. Welcoming visitors. Strengthening the Hartford area.</p><p style="margin-top:10px"><a href="index.html#Contact">Address, hours &amp; contact →</a></p></div>
+    <div><h4>Explore</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="membership.html">Membership</a><a href="visit.html">Visit &amp; Explore</a><a href="events.html">Events</a><a href="news.html">News</a><a href="index.html#Contact">Contact</a></div>
     <div><h4>Quechee Balloon Festival</h4><a href="balloon-fest.html">Festival home</a><a href="balloon-fest.html#tickets">Buy tickets</a><a href="balloon-fest.html#info">Getting here</a></div>
     <div><h4>Connect</h4><a href="https://www.facebook.com/hartfordchamber.vt">Facebook</a><a href="https://www.instagram.com/hartfordvt_chamber_commerce/">Instagram</a><a href="mailto:info@hartfordvtchamber.com">info@hartfordvtchamber.com</a><a href="tel:8022956852">Visitor Center 802.295.6852</a></div>
   </div>

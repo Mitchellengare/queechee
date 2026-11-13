@@ -2,21 +2,35 @@
 <title>Hartford Area Chamber of Commerce</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=34"></head><body>
+<link rel="stylesheet" href="styles.css?v=40"></head><body>
 <main id="main">
-<section class="hero"><div class="wrap">
-  <p class="eyebrow" style="color:#ffd2b0">Quechee · White River Junction · Hartford Village · West Hartford · Wilder</p>
-  <h1>Supporting Business. Welcoming Visitors. Strengthening the Hartford Area.</h1>
-  <p>The Chamber connects businesses, residents, and visitors across the five villages of Hartford, Vermont.</p>
-  <div class="actions"><a class="btn btn-primary" href="membership.html">Join the Chamber</a><a class="btn btn-ghost" href="visit.html">Plan Your Visit</a></div>
-</div></section>
-
-<!-- Balloon fest is the top revenue driver, so it gets a prominent band with live countdown -->
-<section class="bf-band photo" style="--bg:url(img/balloon-fest-1.jpg)"><div class="wrap">
-  <div><p class="eyebrow" style="color:#fff3e6">🎈 Our signature event</p><h2>Quechee Balloon Festival</h2><p>Father's Day weekend · Village Green, Quechee</p></div>
-  <div class="count" aria-label="Countdown to next festival"></div>
-  <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-ghost" style="color:#fff;background:rgba(0,0,0,.15)" href="balloon-fest.html">Take Flight →</a><a class="btn btn-lg" style="background:#fff;color:var(--orange-d)" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">🎟️ Buy Tickets</a></div>
-</div></section>
+<section class="slider" id="top" data-label="Top" role="region" aria-roledescription="carousel" aria-label="Featured at the Chamber">
+  <div class="slides">
+    <article class="slide on" role="group" aria-roledescription="slide" aria-label="1 of 3" style="--img:url(img/hero-mill.jpg)"><div class="wrap">
+      <p class="eyebrow" style="color:#ffd2b0">Hartford, Vermont</p>
+      <h1>Supporting Business. Welcoming Visitors. Strengthening the Hartford Area.</h1>
+      <p class="sl-text">The Hartford Area Chamber of Commerce connects businesses, residents, and visitors across Quechee, White River Junction, Hartford Village, West Hartford, and Wilder through advocacy, promotion, local partnerships, and community engagement.</p>
+      <div class="actions"><a class="btn btn-primary btn-lg" href="membership.html">Join the Chamber</a></div>
+      <p class="quick"><a href="membership.html">Member Directory</a><span>|</span><a href="events.html">Upcoming Events</a><span>|</span><a href="visit.html">Visit Quechee Gorge Visitor Center</a></p>
+    </div></article>
+    <article class="slide" role="group" aria-roledescription="slide" aria-label="2 of 3" style="--img:url(img/hero-visitor-center.jpg)"><div class="wrap">
+      <p class="eyebrow" style="color:#ffd2b0">Visit &amp; Explore</p>
+      <h2>Quechee Gorge Visitor Center</h2>
+      <p class="sl-text">Your gateway to exploring Vermont's deepest gorge and the stunning surroundings.</p>
+      <div class="actions"><a class="btn btn-primary btn-lg" href="visit.html">Explore More</a></div>
+    </div></article>
+    <article class="slide" role="group" aria-roledescription="slide" aria-label="3 of 3" style="--img:url(img/hero-balloons.jpg)"><div class="wrap">
+      <p class="eyebrow" style="color:#fff3e6">🎈 Our signature event · Father's Day weekend</p>
+      <h2>Quechee Balloon Festival</h2>
+      <p class="sl-text">Hot air balloons, live music, family-friendly shows, food vendors, and unforgettable views under beautiful blue Vermont skies.</p>
+      <div class="count" aria-label="Countdown to the next festival"></div>
+      <div class="actions"><a class="btn btn-primary btn-lg" href="balloon-fest.html">Take Flight</a><a class="btn btn-lg" style="background:#fff;color:var(--orange-d)" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">🎟️ Buy Tickets</a></div>
+    </div></article>
+  </div>
+  <button class="sl-arrow sl-prev" id="slPrev" aria-label="Previous slide">‹</button>
+  <button class="sl-arrow sl-next" id="slNext" aria-label="Next slide">›</button>
+  <div class="sl-ctrl"><span class="sl-dots" id="slDots"></span></div>
+</section>
 
 <section><div class="wrap">
   <div class="center"><p class="eyebrow">What's happening</p><h2>Upcoming Events</h2><p class="legend-key" role="note" aria-label="Key: green star means hosted by the Chamber, blue dot means community event"><span class="key"><i class="sw chamber" aria-hidden="true">★</i>Hosted by the Chamber</span><span class="key"><i class="sw community" aria-hidden="true">●</i>Community event</span></p></div>
@@ -24,39 +38,79 @@
   <p class="center" style="margin-top:16px"><a class="btn btn-green" href="events.html">View full calendar</a></p>
 </div></section>
 
-<section class="alt"><div class="wrap split">
-  <div><p class="eyebrow">Visit &amp; Explore</p><h2>Quechee Gorge Visitor Center</h2>
-    <p class="lead" style="margin:12px 0 20px">Your gateway to exploring Vermont's deepest gorge. The center welcomes more than 100,000 visitors each year. Open daily 9:00 AM–5:00 PM.</p>
+<section class="alt" id="visitor-center"><div class="wrap split">
+  <div><p class="eyebrow">Visit &amp; Explore</p><h2>Start at the Quechee Gorge Visitor Center</h2>
+    <p style="margin:12px 0;color:var(--muted)">Managed by the Hartford Area Chamber of Commerce in partnership with the Army Corps of Engineers and the Vermont Department of Forests, Parks, and Recreation, the Visitor Center is a welcoming first stop for visitors discovering the region.</p>
+    <p style="margin:0 0 14px;color:var(--muted)">Located within Quechee Gorge State Park, the center welcomes more than 100,000 visitors each year and helps connect travelers to local businesses, attractions, and services throughout the Hartford Area and Upper Valley.</p>
+    <p style="margin-bottom:20px"><b>Current Visitor Center hours:</b> 9:00 AM–5:00 PM daily.</p>
     <a class="btn btn-green" href="visit.html">Plan Your Visit</a></div>
-  <div class="panel photo t-gorge" style="background-image:url(img/gorge-bridge.jpg)" role="img" aria-label="The bridge over Quechee Gorge">🏞️</div>
+  <div class="duo"><div class="panel photo" style="background-image:url(img/quechee-gorge.jpg)" role="img" aria-label="Forested mountain gorge with a rocky ravine under a blue sky"></div>
+  <div class="panel photo" style="background-image:url(img/autumn.jpg)" role="img" aria-label="Red cabin-style Visitor Center beside bright autumn trees"></div></div>
 </div></section>
 
-<section><div class="wrap">
-  <div class="center"><p class="eyebrow">Membership</p><h2>Why Join the Hartford Area Chamber?</h2></div>
-  <div class="grid g4" style="margin-top:32px">
-    <div class="perk"><div class="ico">📣</div><h3>Advocacy &amp; Support</h3><p>A voice for local business and resources to help you grow.</p></div>
-    <div class="perk"><div class="ico">👀</div><h3>Community Visibility</h3><p>Be seen by residents and the 100,000+ yearly visitors.</p></div>
-    <div class="perk"><div class="ico">📰</div><h3>Weekly News</h3><p>Opportunities and updates delivered every week.</p></div>
-    <div class="perk"><div class="ico">💸</div><h3>Member Savings</h3><p>Benefits and insurance savings through VACE.</p></div>
+<section id="stronger"><div class="wrap split">
+  <div class="panel photo" style="background-image:url(img/downtown.jpg);min-height:clamp(260px,44vh,440px)" role="img" aria-label="Small-town street with brick storefronts and outdoor dining"></div>
+  <div><p class="eyebrow">Who we are</p><h2>A Stronger Chamber for a Stronger Community</h2>
+    <p style="margin:12px 0 20px;color:var(--muted)">The Chamber is committed to attracting, supporting, and growing businesses throughout the greater Hartford Area and Upper Valley. From startups and small local businesses to established employers, it helps members thrive through advocacy, economic development initiatives, community visibility, and practical business resources. Located on the Vermont–New Hampshire border, it proudly serves Quechee, White River Junction, Hartford Village, West Hartford, Wilder, and surrounding communities.</p>
+    <a class="btn btn-green" href="about.html">About the Chamber</a></div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <div class="center"><p class="eyebrow">Membership</p><h2>Why Join the Hartford Area Chamber?</h2>
+  <p class="lead">Membership connects your business to a broader local network while giving you tools, visibility, and support to grow.</p></div>
+  <div class="grid g4" style="margin-top:28px">
+    <div class="perk"><div class="ico">📣</div><h3>Advocacy &amp; Business Support</h3><p>Stay connected to resources and initiatives designed to help local businesses succeed and grow.</p></div>
+    <div class="perk"><div class="ico">👀</div><h3>Visibility in the Community</h3><p>Be seen by residents, visitors, and fellow businesses through Chamber promotion, listings, and events.</p></div>
+    <div class="perk"><div class="ico">📰</div><h3>Weekly News &amp; Opportunities</h3><p>Receive the Chamber newsletter with updates on local events, business opportunities, and community resources.</p></div>
+    <div class="perk"><div class="ico">💸</div><h3>Member Benefits &amp; Savings</h3><p>Access membership benefits and value-added resources, including available insurance-related offerings.</p></div>
   </div>
-  <p class="center" style="margin-top:28px"><a class="btn btn-green" href="membership.html">View member benefits</a></p>
+  <p class="center" style="margin-top:26px"><a class="btn btn-green" href="membership.html">View Member Benefits</a></p>
 </div></section>
 
-<section class="dark" id="Contact"><div class="wrap center">
-  <h2>Join, Visit, or Get Connected</h2>
-  <p class="lead" style="color:#cfe2d8;margin:10px auto 22px">5966 Woodstock Road, Quechee, VT · Mon–Fri 10–4 · <a href="tel:8022957900" style="text-decoration:underline">802.295.7900</a></p>
-  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-    <a class="btn btn-primary btn-lg" href="membership.html">Join Today</a>
-    <a class="btn btn-ghost btn-lg" style="color:#fff;box-shadow:none" href="contact.html">Contact Us</a>
-    <a class="btn btn-ghost btn-lg" style="color:#fff;box-shadow:none" href="visit.html">Explore the Area</a>
+<section id="partners"><div class="wrap center">
+  <p class="eyebrow">Our sponsors</p><h2>Supported by Community Partners</h2>
+  <p class="lead">The Chamber's work is strengthened by local sponsors, regional partners, and businesses that invest in the success of the Hartford Area. Their support helps the Chamber promote local commerce, serve visitors, and create opportunities across the community.</p>
+  <div class="sponsors-row"><img src="img/sponsor-jack.png" alt="Jack and Dorothy sponsor logo"><img src="img/sponsor-vtc.png" alt="VT Construction sponsor logo"></div>
+</div></section>
+
+<section class="dark" id="Contact"><div class="wrap split" style="align-items:start">
+  <div><p class="eyebrow" style="color:#ffd2b0">Contact</p><h2>Send us an email and we'll get back to you soon.</h2>
+    <form onsubmit="event.preventDefault();this.innerHTML='<h3 style=&quot;color:#fff&quot;>Thank you for contacting us.</h3><p>We will get back to you soon.</p>'" style="margin-top:14px">
+      <input placeholder="Name" required aria-label="Name"><input type="email" placeholder="Email" required aria-label="Email"><input placeholder="Phone" aria-label="Phone">
+      <textarea rows="3" placeholder="Message" required aria-label="Message"></textarea><button class="btn btn-primary">Send message</button></form></div>
+  <div class="addr">
+    <div><h3>Hartford Area Chamber</h3><p>5966 Woodstock Road<br>P.O. Box 823<br>Quechee, VT 05059-0823<br>Mon–Fri 10:00–4:00 PM<br><a href="mailto:info@hartfordvtchamber.com">info@hartfordvtchamber.com</a><br><a href="tel:8022957900">802.295.7900</a></p></div>
+    <div><h3>Quechee Gorge Visitor Center</h3><p>5966 Woodstock Road<br>P.O. Box 823<br>Quechee, VT 05059-0823<br>Every day 9:00–5:00 PM<br><a href="mailto:info@hartfordvtchamber.com">info@hartfordvtchamber.com</a><br><a href="tel:8022956852">802.295.6852</a></p></div>
   </div>
 </div></section>
 </main>
-<script src="app.js?v=26"></script>
+<script src="app.js?v=28"></script>
 <script>
 document.getElementById('feat').innerHTML=['speed','first-friday','pentangle'].map(k=>EVENTS.filter(e=>e.key===k&&e.date>=new Date().toISOString().slice(0,10))[0]||EVENTS.find(e=>e.key===k)).map(e=>`
 <article class="card"><div class="thumb ${e.thumb}${e.img?' photo':''}" ${thumbBg(e)}>${e.icon}</div>
 <div class="body">${badge(e)}<h3>${e.title}</h3>
 <div class="meta"><span>📅 ${fmt(e.date,{month:'long',day:'numeric',year:'numeric'})}${e.end?' – '+fmt(e.end,{day:'numeric'}):''}</span><span>🕒 ${e.time}</span><span>📍 ${e.place}</span></div>
 <a class="btn btn-green" href="${e.bf?'balloon-fest.html':'events.html'}">Details</a></div></article>`).join('');
-</script></body></html>
+</script><script>
+/* hero slider: auto-advances, but holds still while the mouse is over it or a control has focus (someone may be reading) */
+(function(){
+  const root=document.querySelector('.slider'),slides=[...root.querySelectorAll('.slide')],dots=document.getElementById('slDots');
+  const DELAY=3000;
+  let i=0,t=null,hover=false,focus=false,manual=false;
+  slides.forEach((_,n)=>{const b=document.createElement('button');b.className='sl-dot';b.setAttribute('aria-label','Go to slide '+(n+1));b.onclick=()=>{go(n);schedule()};dots.appendChild(b)});
+  const track=root.querySelector('.slides');
+  function go(n){i=(n+slides.length)%slides.length;track.style.transform='translateX('+(-100*i)+'%)';slides.forEach((s,k)=>{s.classList.toggle('on',k===i);s.setAttribute('aria-hidden',k===i?'false':'true');s.inert=k!==i});[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i))}
+  function stop(){clearTimeout(t);t=null}
+  function schedule(){stop();if(manual||hover||focus||document.hidden)return;t=setTimeout(()=>{go(i+1);schedule()},DELAY)}
+  slPrev.onclick=()=>{go(i-1);schedule()};slNext.onclick=()=>{go(i+1);schedule()};
+  /* pause only for a real mouse pointer resting on it, or keyboard focus (not a leftover focus from a click) */
+  root.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hover=true;stop()}});
+  root.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){hover=false;schedule()}});
+  root.addEventListener('focusin',e=>{if(e.target.matches(':focus-visible')){focus=true;stop()}});
+  root.addEventListener('focusout',()=>{focus=false;schedule()});
+  root.addEventListener('click',()=>{focus=false;schedule()});
+  document.addEventListener('visibilitychange',schedule);
+  go(0);schedule();
+})();
+</script>
+</body></html>

@@ -2,7 +2,7 @@
 <title>Events · Hartford Area Chamber</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=34"></head><body>
+<link rel="stylesheet" href="styles.css?v=40"></head><body>
 <main id="main">
 <section class="page-hero photo" style="--bg:url(img/downtown.jpg)"><div class="wrap"><div class="crumbs"><a href="index.html">Home</a> / Events</div>
 <h1>Events in the Hartford Area</h1><p>Explore the latest local events in Hartford, the Upper Valley, and beyond.</p></div></section>
@@ -42,7 +42,7 @@
 </main>
 
 <dialog id="dlg"></dialog>
-<script src="app.js?v=26"></script>
+<script src="app.js?v=28"></script>
 <script>
 let filter='all',season='all';
 const inSeason=e=>season==='all'||e.season==='all'||seasonOf(e)===season; // year-round series show in every season
@@ -93,7 +93,7 @@ function reviewsHTML(e){
   <select name="s" aria-label="Rating" style="padding:12px;border-radius:10px;border:1.5px solid var(--line);font:1rem var(--font-b)"><option value="5">★★★★★ Loved it</option><option value="4">★★★★ Great</option><option value="3">★★★ Good</option><option value="2">★★ Fair</option><option value="1">★ Poor</option></select>
   <textarea name="t" rows="3" placeholder="How was it?" required aria-label="Your review"></textarea>
   <input type="file" name="p" accept="image/*" multiple aria-label="Add photos">
-  <small>Reviews are checked by the Chamber before they appear publicly. Have a concern? <a href="contact.html">Tell us privately</a>.</small>
+  <small>Reviews are checked by the Chamber before they appear publicly. Have a concern? <a href="index.html#Contact">Tell us privately</a>.</small>
   <button class="btn btn-primary">Submit review</button></form>
  <div style="display:grid;gap:10px">${list.map(card).join('')}</div>`}
 function addRv(ev,id){ev.preventDefault();const f=ev.target,photos=[...f.p.files].slice(0,4).map(x=>URL.createObjectURL(x));
