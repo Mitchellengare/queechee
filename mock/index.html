@@ -1,35 +1,31 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hartford Area Chamber of Commerce</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=40"></head><body>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=45"></head><body>
 <main id="main">
 <section class="slider" id="top" data-label="Top" role="region" aria-roledescription="carousel" aria-label="Featured at the Chamber">
   <div class="slides">
-    <article class="slide on" role="group" aria-roledescription="slide" aria-label="1 of 3" style="--img:url(img/hero-mill.jpg)"><div class="wrap">
-      <p class="eyebrow" style="color:#ffd2b0">Hartford, Vermont</p>
+    <article class="slide" role="group" aria-roledescription="slide" aria-label="1 of 3" style="--img:url(img/hero-mill.jpg)"><div class="wrap">
       <h1>Supporting Business. Welcoming Visitors. Strengthening the Hartford Area.</h1>
       <p class="sl-text">The Hartford Area Chamber of Commerce connects businesses, residents, and visitors across Quechee, White River Junction, Hartford Village, West Hartford, and Wilder through advocacy, promotion, local partnerships, and community engagement.</p>
-      <div class="actions"><a class="btn btn-primary btn-lg" href="membership.html">Join the Chamber</a></div>
-      <p class="quick"><a href="membership.html">Member Directory</a><span>|</span><a href="events.html">Upcoming Events</a><span>|</span><a href="visit.html">Visit Quechee Gorge Visitor Center</a></p>
+      <div class="actions"><a class="btn btn-primary" href="membership.html">Join the Chamber</a></div>
     </div></article>
     <article class="slide" role="group" aria-roledescription="slide" aria-label="2 of 3" style="--img:url(img/hero-visitor-center.jpg)"><div class="wrap">
-      <p class="eyebrow" style="color:#ffd2b0">Visit &amp; Explore</p>
       <h2>Quechee Gorge Visitor Center</h2>
       <p class="sl-text">Your gateway to exploring Vermont's deepest gorge and the stunning surroundings.</p>
-      <div class="actions"><a class="btn btn-primary btn-lg" href="visit.html">Explore More</a></div>
+      <div class="actions"><a class="btn btn-primary" href="visit.html">Explore More</a></div>
     </div></article>
     <article class="slide" role="group" aria-roledescription="slide" aria-label="3 of 3" style="--img:url(img/hero-balloons.jpg)"><div class="wrap">
-      <p class="eyebrow" style="color:#fff3e6">🎈 Our signature event · Father's Day weekend</p>
       <h2>Quechee Balloon Festival</h2>
       <p class="sl-text">Hot air balloons, live music, family-friendly shows, food vendors, and unforgettable views under beautiful blue Vermont skies.</p>
-      <div class="count" aria-label="Countdown to the next festival"></div>
-      <div class="actions"><a class="btn btn-primary btn-lg" href="balloon-fest.html">Take Flight</a><a class="btn btn-lg" style="background:#fff;color:var(--orange-d)" href="https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/?full-items=yes&flow=1565675">🎟️ Buy Tickets</a></div>
+      <div class="actions"><a class="btn btn-primary" href="balloon-fest.html">Take Flight</a></div>
     </div></article>
   </div>
-  <button class="sl-arrow sl-prev" id="slPrev" aria-label="Previous slide">‹</button>
-  <button class="sl-arrow sl-next" id="slNext" aria-label="Next slide">›</button>
+  <button class="sl-arrow sl-prev" id="slPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><polyline points="15,4 7,12 15,20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <button class="sl-arrow sl-next" id="slNext" aria-label="Next slide"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><polyline points="9,4 17,12 9,20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <div class="sl-ctrl"><span class="sl-dots" id="slDots"></span></div>
+  <p class="sl-quick"><a href="membership.html">Member Directory</a><span>|</span><a href="events.html">Upcoming Events</a><span>|</span><a href="visit.html">Visit Quechee Gorge Visitor Center</a></p>
 </section>
 
 <section><div class="wrap">
@@ -70,7 +66,7 @@
 <section id="partners"><div class="wrap center">
   <p class="eyebrow">Our sponsors</p><h2>Supported by Community Partners</h2>
   <p class="lead">The Chamber's work is strengthened by local sponsors, regional partners, and businesses that invest in the success of the Hartford Area. Their support helps the Chamber promote local commerce, serve visitors, and create opportunities across the community.</p>
-  <div class="sponsors-row"><img src="img/sponsor-jack.png" alt="Jack and Dorothy sponsor logo"><img src="img/sponsor-vtc.png" alt="VT Construction sponsor logo"></div>
+  <div class="sponsors-row"><img src="img/sponsor-jack.png" alt="Jack &amp; Dorothy Byrne Foundation"><img src="img/sponsor-vtc.png" alt="Vermont Construction, Roofing Division"></div>
 </div></section>
 
 <section class="dark" id="Contact"><div class="wrap split" style="align-items:start">
@@ -84,7 +80,7 @@
   </div>
 </div></section>
 </main>
-<script src="app.js?v=28"></script>
+<script src="app.js?v=29"></script>
 <script>
 document.getElementById('feat').innerHTML=['speed','first-friday','pentangle'].map(k=>EVENTS.filter(e=>e.key===k&&e.date>=new Date().toISOString().slice(0,10))[0]||EVENTS.find(e=>e.key===k)).map(e=>`
 <article class="card"><div class="thumb ${e.thumb}${e.img?' photo':''}" ${thumbBg(e)}>${e.icon}</div>
@@ -92,25 +88,20 @@ document.getElementById('feat').innerHTML=['speed','first-friday','pentangle'].m
 <div class="meta"><span>📅 ${fmt(e.date,{month:'long',day:'numeric',year:'numeric'})}${e.end?' – '+fmt(e.end,{day:'numeric'}):''}</span><span>🕒 ${e.time}</span><span>📍 ${e.place}</span></div>
 <a class="btn btn-green" href="${e.bf?'balloon-fest.html':'events.html'}">Details</a></div></article>`).join('');
 </script><script>
-/* hero slider: auto-advances, but holds still while the mouse is over it or a control has focus (someone may be reading) */
+/* hero slider: always auto-advances (a click on an arrow or dot restarts the timer) */
 (function(){
   const root=document.querySelector('.slider'),slides=[...root.querySelectorAll('.slide')],dots=document.getElementById('slDots');
   const DELAY=3000;
-  let i=0,t=null,hover=false,focus=false,manual=false;
+  let i=0,t=null;
   slides.forEach((_,n)=>{const b=document.createElement('button');b.className='sl-dot';b.setAttribute('aria-label','Go to slide '+(n+1));b.onclick=()=>{go(n);schedule()};dots.appendChild(b)});
   const track=root.querySelector('.slides');
   function go(n){i=(n+slides.length)%slides.length;track.style.transform='translateX('+(-100*i)+'%)';slides.forEach((s,k)=>{s.classList.toggle('on',k===i);s.setAttribute('aria-hidden',k===i?'false':'true');s.inert=k!==i});[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i))}
   function stop(){clearTimeout(t);t=null}
-  function schedule(){stop();if(manual||hover||focus||document.hidden)return;t=setTimeout(()=>{go(i+1);schedule()},DELAY)}
+  function schedule(){stop();if(document.hidden)return;t=setTimeout(()=>{go(i+1);schedule()},DELAY)}
   slPrev.onclick=()=>{go(i-1);schedule()};slNext.onclick=()=>{go(i+1);schedule()};
-  /* pause only for a real mouse pointer resting on it, or keyboard focus (not a leftover focus from a click) */
-  root.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hover=true;stop()}});
-  root.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){hover=false;schedule()}});
-  root.addEventListener('focusin',e=>{if(e.target.matches(':focus-visible')){focus=true;stop()}});
-  root.addEventListener('focusout',()=>{focus=false;schedule()});
-  root.addEventListener('click',()=>{focus=false;schedule()});
   document.addEventListener('visibilitychange',schedule);
-  go(0);schedule();
+  /* photo first, then the words rise in */
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{go(0);schedule()}));
 })();
 </script>
 </body></html>

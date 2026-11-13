@@ -94,7 +94,7 @@ function openTickets(){
     ['img/qbf-a.jpg','Hot Air Balloon Adventure Ride','Get ready to soar at the Quechee Balloon Festival!','Select date',TICKETS],
     ['img/sunrise.jpg','Sunrise Yoga','Yoga while the sun rises and the pilots fill their balloons!','Select date',TICKETS],
     ['img/ebike.jpg','Balloon Festival E-Bike Ride','Starting at $129 · Self-guided e-bike adventure to visit a fourth-generation maple farm.','View',TICKETS],
-    ['img/balloons-2.jpg','Balloon Ride Raffle','Your chance to win a trip to the skies.','Buy',TICKETS],
+    ['img/qbf-b.jpg','Balloon Ride Raffle','Your chance to win a trip to the skies.','Buy',TICKETS],
     ['img/balloon-fest-1.jpg','Volunteer, Vendor & Sponsor Registration','Be part of the tradition.','View',SPONSOR]
   ];
   d.innerHTML=`<button class="x" aria-label="Close" onclick="document.getElementById('tix').close()">✕</button>

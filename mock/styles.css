@@ -555,3 +555,42 @@ nav.main a{white-space:nowrap}
 .faq details[open]{border-color:var(--orange)}
 .faq details p{padding:0 18px 16px;color:var(--muted);font-size:.95rem;line-height:1.6}
 @media(max-width:800px){.faq{grid-template-columns:1fr}}
+/* slider: photo shows first, then the words rise up from below */
+.slide .wrap>*{opacity:0;transform:translateY(46px);transition:opacity .3s ease,transform .3s ease}
+.slide.on .wrap>*{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.slide.on .wrap>:nth-child(1){transition-delay:.45s}
+.slide.on .wrap>:nth-child(2){transition-delay:.55s}
+.slide.on .wrap>:nth-child(3){transition-delay:.65s}
+.slide.on .wrap>:nth-child(4){transition-delay:.75s}
+.slide.on .wrap>:nth-child(5){transition-delay:.85s}
+@media(prefers-reduced-motion:reduce){.slide .wrap>*,.slide.on .wrap>*{opacity:1;transform:none;transition:none}}
+/* slider: centered, evenly spaced text */
+.slide{background:linear-gradient(180deg,rgba(15,40,25,.5),rgba(15,40,25,.68)),var(--img) center/cover}
+.slide .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 96px 84px}
+.slide .eyebrow{margin:0 0 16px}
+.slide h1,.slide h2{max-width:22ch;margin:0 auto}
+.slide .sl-text{max-width:62ch;margin:22px auto 30px}
+.slide .actions{justify-content:center}
+.slide .quick{justify-content:center;margin:30px 0 0}
+@media(max-width:700px){.slide .wrap{padding:28px 20px 84px}}
+/* slider: keep tall slides inside short windows */
+.slide h1,.slide h2{font-size:clamp(1.8rem,min(3.4vw,5.6vh),2.9rem);max-width:24ch;line-height:1.15}
+.slide .sl-text{font-size:clamp(.98rem,min(1.3vw,2.6vh),1.15rem);margin:clamp(12px,2.4vh,22px) auto clamp(16px,3.2vh,30px)}
+.slide .wrap{padding-top:clamp(20px,4vh,40px);padding-bottom:clamp(64px,10vh,96px)}
+.slide .quick{margin-top:clamp(14px,3vh,30px)}
+.slide .eyebrow{margin-bottom:clamp(8px,1.8vh,16px)}
+.slide h1,.slide h2{text-wrap:balance}
+/* slider v3: match the original site (big serif heading, one line of text, one green button, plain chevrons) */
+.slide{background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42)),var(--img) center/cover}
+.slide .wrap{max-width:none;width:100%;padding:0 72px;padding-top:clamp(20px,5vh,56px);padding-bottom:clamp(64px,12vh,110px)}
+.slide h1,.slide h2{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:#fff;font-size:clamp(2rem,min(4.2vw,7vh),3.6rem);line-height:1.2;max-width:min(1300px,100%);margin:0 auto;text-wrap:balance;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+.slide .sl-text{font-size:clamp(.92rem,min(1.2vw,2.4vh),1.05rem);line-height:1.55;max-width:min(1300px,100%);margin:clamp(10px,2vh,18px) auto clamp(16px,3.2vh,28px);color:#fff;text-wrap:balance}
+.slide .btn-primary{background:#17573c;border-radius:3px;padding:14px 24px;font-size:1.05rem;font-weight:500;box-shadow:none}
+.slide .btn-primary:hover{background:#0f3f2b}
+.sl-arrow{background:none!important;width:52px;height:52px;padding:0;color:#fff;border-radius:0}
+.sl-arrow:hover{opacity:.75}
+.sl-prev{left:14px}.sl-next{right:14px}
+.sl-quick{position:absolute;left:0;right:0;bottom:0;margin:0;padding:13px 20px;background:rgba(0,0,0,.45);display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:.95rem;color:#e6efe9;z-index:3}
+.sl-quick a{color:#fff;text-decoration:none}.sl-quick a:hover{text-decoration:underline}.sl-quick span{opacity:.55}
+.sl-ctrl{bottom:62px}
+@media(max-width:700px){.slide .wrap{padding:28px 56px 120px}.sl-arrow{width:40px;height:40px;top:50%;bottom:auto;transform:translateY(-50%)}.sl-prev{left:6px}.sl-next{right:6px}}
