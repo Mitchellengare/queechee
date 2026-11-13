@@ -89,19 +89,19 @@ function openTickets(){
   const alerts=isBF?'#alerts':'balloon-fest.html#alerts';
   const SPONSOR='https://fareharbor.com/embeds/book/hartfordareachamberofcommerce/items/708093/?full-items=yes&flow=1575107';
   const OPTS=[
-    ['🎪','Quechee Balloon Festival Admission','46th Annual! All ages welcome!','Buy',TICKETS,true],
-    ['🎈','Hot Air Balloon Adventure Ride','Get ready to soar at the Quechee Balloon Festival!','Select date',TICKETS],
-    ['🧘','Sunrise Yoga','Yoga while the sun rises and the pilots fill their balloons!','Select date',TICKETS],
-    ['🚲','Balloon Festival E-Bike Ride','Starting at $129 · Self-guided e-bike adventure to visit a fourth-generation maple farm.','View',TICKETS],
-    ['🎟️','Balloon Ride Raffle','Your chance to win a trip to the skies.','Buy',TICKETS],
-    ['🤝','Volunteer, Vendor & Sponsor Registration','Be part of the tradition.','View',SPONSOR]
+    ['img/qbf-c.jpg','Quechee Balloon Festival Admission','46th Annual! All ages welcome!','Buy',TICKETS,true],
+    ['img/qbf-a.jpg','Hot Air Balloon Adventure Ride','Get ready to soar at the Quechee Balloon Festival!','Select date',TICKETS],
+    ['img/sunrise.jpg','Sunrise Yoga','Yoga while the sun rises and the pilots fill their balloons!','Select date',TICKETS],
+    ['img/ebike.jpg','Balloon Festival E-Bike Ride','Starting at $129 · Self-guided e-bike adventure to visit a fourth-generation maple farm.','View',TICKETS],
+    ['img/balloons-2.jpg','Balloon Ride Raffle','Your chance to win a trip to the skies.','Buy',TICKETS],
+    ['img/balloon-fest-1.jpg','Volunteer, Vendor & Sponsor Registration','Be part of the tradition.','View',SPONSOR]
   ];
   d.innerHTML=`<button class="x" aria-label="Close" onclick="document.getElementById('tix').close()">✕</button>
-  <div class="thumb photo" style="background-image:url(img/qbf-c.jpg);height:110px"></div>
+  <div class="thumb photo" style="background-image:url(img/qbf-d.jpg)"></div>
   <div class="inner">
     <span class="badge b-chamber">★ Hosted by the Chamber</span>
     <h3>Quechee Balloon Festival · Book online</h3>
-    <div class="opts">${OPTS.map(o=>`<div class="opt${o[5]?' main':''}"><span class="oi" aria-hidden="true">${o[0]}</span><span><b>${o[1]}</b><small>${o[2]}</small></span><a class="btn ${o[5]?'btn-primary':'btn-green'}" data-direct="1" target="_blank" rel="noopener" href="${o[4]}" aria-label="${o[3]}: ${o[1]}">${o[3]}</a></div>`).join('')}</div>
+    <div class="opts">${OPTS.map(o=>`<div class="opt${o[5]?' main':''}"><span class="oi ph" aria-hidden="true" style="background-image:url(${o[0]})${o[0].includes('ebike')?';background-position:center 68%':''}"></span><span><b>${o[1]}</b><small>${o[2]}</small></span><a class="btn ${o[5]?'btn-primary':'btn-green'}" data-direct="1" target="_blank" rel="noopener" href="${o[4]}" aria-label="${o[3]}: ${o[1]}">${o[3]}</a></div>`).join('')}</div>
     <small style="color:var(--muted)">All prices in US dollars. Booking opens on the Chamber's secure FareHarbor page. 2027 dates and prices aren't announced yet.</small>
     <a class="btn btn-ghost" style="color:var(--green);align-self:flex-start" href="${alerts}" onclick="document.getElementById('tix').close()">Get text alerts when tickets drop</a>
   </div>`;

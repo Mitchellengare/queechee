@@ -466,3 +466,22 @@ html.snap .cal-grid{grid-auto-rows:clamp(60px,10vh,92px)}
 .toolbar .chip{flex:0 0 auto;white-space:nowrap;padding:7px 12px;font-size:.84rem}
 .toolbar .chip .sw{margin-right:4px}
 @media(max-width:700px){.cal-grid{grid-auto-rows:minmax(56px,auto)}.toolbar{justify-content:flex-start}.ev{display:block;font-size:0;height:8px}}
+/* ticket pop-up: photos */
+dialog#tix .thumb{height:150px!important;background-position:center 40%}
+.opt .oi.ph{display:block;width:72px;height:56px;border-radius:10px;background-size:cover;background-position:center;font-size:0}
+.opt.main .oi.ph{box-shadow:0 0 0 2px #b84f12}
+@media(max-height:700px){dialog#tix .thumb{height:90px!important}.opt .oi.ph{width:60px;height:46px}}
+@media(max-width:520px){.opt .oi.ph{width:56px;height:46px}}
+/* ticket pop-up: roomy layout (overrides the compact rules above; scrolls instead of squeezing) */
+dialog#tix{max-width:860px;width:94%;max-height:92vh;overflow-y:auto}
+dialog#tix .thumb{height:210px!important}
+dialog#tix .inner{padding:26px 32px 30px;gap:14px}
+dialog#tix h3{font-size:1.6rem}
+dialog#tix .opts{gap:14px;margin:6px 0}
+dialog#tix .opt{padding:14px 18px;gap:18px;border-radius:14px}
+dialog#tix .opt b{font-size:1.05rem}
+dialog#tix .opt small{font-size:.9rem;margin-top:4px}
+dialog#tix .opt .oi.ph{width:112px;height:84px;border-radius:12px}
+dialog#tix .opt .btn{padding:10px 24px;font-size:.95rem}
+@media(max-height:700px){dialog#tix .thumb{height:140px!important}dialog#tix .opt .oi.ph{width:96px;height:72px}dialog#tix .opt small{font-size:.85rem}}
+@media(max-width:620px){dialog#tix .thumb{height:140px!important}dialog#tix .inner{padding:18px}dialog#tix .opt{padding:12px}dialog#tix .opt .oi.ph{width:84px;height:64px}}
