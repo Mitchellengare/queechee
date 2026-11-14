@@ -80,7 +80,7 @@
   </div>
 </div></section>
 </main>
-<script src="app.js?v=29"></script>
+<script src="app.js?v=30"></script>
 <script>
 document.getElementById('feat').innerHTML=['speed','first-friday','pentangle'].map(k=>EVENTS.filter(e=>e.key===k&&e.date>=new Date().toISOString().slice(0,10))[0]||EVENTS.find(e=>e.key===k)).map(e=>`
 <article class="card"><div class="thumb ${e.thumb}${e.img?' photo':''}" ${thumbBg(e)}>${e.icon}</div>
