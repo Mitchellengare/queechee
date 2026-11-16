@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link rel="stylesheet" href="styles.css?v=44"></head><body>
+<link rel="stylesheet" href="styles.css?v=45"></head><body>
 <main id="main">
 <section class="page-hero photo" style="--bg:url(img/quechee-aerial.jpg)"><div class="wrap"><div class="crumbs"><a href="index.html">Home</a> / Visit &amp; Explore</div>
 <h1>Visit, Explore, and Experience the Hartford Area</h1><p>Covered bridges, historic villages, the Gorge and four seasons of Vermont.</p></div></section>
@@ -17,8 +17,12 @@
 </div></section>
 
 <section class="alt" id="explore-map"><div class="wrap">
-  <p class="eyebrow">2 · Quechee State Park Map</p>
-  <h2>Find your way around</h2><p class="lead" style="margin:8px 0 12px">Tap a pin to see what's there, then get directions.</p>
+  <p class="eyebrow">2 · Quechee Gorge &amp; State Park Map</p>
+  <h2>Quechee Gorge &amp; trails</h2><p class="lead" style="margin:8px 0 12px">Parking, viewpoints and marked trails around the gorge. Tap a trail or pin for details.</p>
+  <div class="toolbar" id="gf"><button class="chip on" data-c="all">All</button><button class="chip" data-c="park">Parking</button><button class="chip" data-c="view">Viewpoints &amp; info</button><button class="chip" data-c="trail">Trails</button></div>
+  <div id="gmap" role="application" aria-label="Interactive map of Quechee Gorge, its trails and parking"></div>
+  <p class="note" style="margin-top:8px;font-size:.85rem;color:var(--muted)">Trail and parking data © OpenStreetMap contributors. Trails are shown for orientation only; check posted signs and conditions on site.</p>
+  <h2 style="margin-top:40px">Around the Hartford area</h2><p class="lead" style="margin:8px 0 12px">Tap a pin to see what's there, then get directions.</p>
   <div class="toolbar" id="mf"><button class="chip on" data-c="all">All</button><button class="chip" data-c="see">See &amp; Do</button><button class="chip" data-c="info">Visitor info</button><button class="chip" data-c="event">Event sites</button></div>
   <div id="map" role="application" aria-label="Interactive map of the Hartford area"></div>
 </div></section>
@@ -78,6 +82,7 @@
 </div></section>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="gorge-data.js"></script>
 <script src="app.js?v=30"></script>
 <script>
 const P=[
@@ -93,4 +98,18 @@ const layer=L.layerGroup().addTo(map);
 function draw(c){layer.clearLayers();P.filter(p=>c==='all'||p.c===c).forEach(p=>L.marker(p.ll).bindPopup(`<b>${p.n}</b><br>${p.d}<br><a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${p.ll}">Directions</a>`).addTo(layer))}
 draw('all');
 mf.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;[...mf.children].forEach(x=>x.classList.toggle('on',x===b));draw(b.dataset.c)};
+
+// ---- Gorge-level map ----
+const gmap=L.map('gmap',{scrollWheelZoom:false}).setView([43.6395,-72.4085],15);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap contributors'}).addTo(gmap);
+const gl={park:L.layerGroup(),view:L.layerGroup(),trail:L.layerGroup()};
+const TC={'Quechee Gorge Trail':'#c0392b','Ottauquechee Trail':'#2471a3','Forest Canopy Walkway':'#8e44ad','Lingelbach Trail':'#d68910','McKnight Trail':'#117a65','Laughlin Trail':'#a04000','Farrar Trail':'#7d6608'};
+const dirs=ll=>`<br><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${ll}">Directions</a>`;
+GORGE.paths.forEach(g=>L.polyline(g,{color:'#6b7280',weight:2,opacity:.7,dashArray:'4 4'}).addTo(gl.trail));
+Object.entries(GORGE.trails).forEach(([n,ls])=>ls.forEach(g=>L.polyline(g,{color:TC[n]||'#c0392b',weight:4,opacity:.9}).bindPopup(`<b>${n}</b>`).bindTooltip(n,{sticky:true}).addTo(gl.trail)));
+GORGE.parking.forEach(ll=>L.marker(ll,{icon:L.divIcon({className:'',html:'<div style="background:#1d4ed8;color:#fff;font:700 14px/22px sans-serif;width:24px;height:24px;border-radius:6px;text-align:center;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)">P</div>',iconSize:[24,24],iconAnchor:[12,12]})}).bindPopup('<b>Parking</b>'+dirs(ll)).addTo(gl.park));
+[{n:'Quechee Gorge Visitor Center',ll:[43.63673,-72.40549],d:'5966 Woodstock Rd. Open daily 9–5.'},
+ {n:'Gorge Bridge viewpoint',ll:[43.6374,-72.4085],d:'Look down into Vermont\'s deepest gorge from US-4.'}].forEach(p=>L.marker(p.ll).bindPopup(`<b>${p.n}</b><br>${p.d}${dirs(p.ll)}`).addTo(gl.view));
+Object.values(gl).forEach(l=>l.addTo(gmap));
+gf.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;[...gf.children].forEach(x=>x.classList.toggle('on',x===b));Object.entries(gl).forEach(([k,l])=>b.dataset.c==='all'||b.dataset.c===k?l.addTo(gmap):gmap.removeLayer(l))};
 </script></body></html>
