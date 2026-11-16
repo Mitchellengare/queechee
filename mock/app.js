@@ -34,7 +34,7 @@ const NAV=[
  ['index.html','Home'],
  ['about.html','About'],
  ['Membership',[['membership.html#benefits','Member Benefits'],['membership.html#benefits','Member Insurance with VACE'],['membership.html#join','Join Us'],['membership.html#benefits','Downtown Business Association']]],
- ['Visit & Explore',[['visit.html#visitor-center','Quechee Gorge Visitor Center'],['visit.html#explore-map','Quechee Gorge & State Park Map'],['visit.html#covered-bridges','Covered Bridges of Windsor County'],['visit.html#area-history','Area History and Information']]],
+ ['Visit & Explore',[['visit.html','Quechee Gorge Visitor Center'],['state-park-map.html','Quechee Gorge & State Park Map'],['covered-bridges.html','Covered Bridges of Windsor County'],['area-history.html','Area History and Information']]],
  ['events.html','Events'],
  ['News',[['news.html#newsletter','Chamber Newsletter'],['news.html#guide','The Local\'s Guide']],'right'],
  ['index.html#Contact','Contact']

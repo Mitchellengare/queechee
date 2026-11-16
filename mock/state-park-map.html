@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quechee State Park Map · Hartford Area Chamber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="styles.css?v=53"></head><body>
+<main id="main">
+<section class="page-hero photo" style="--bg:url(img/quechee-gorge.jpg)"><div class="wrap"><div class="crumbs"><a href="index.html">Home</a> / <a href="visit.html">Visit &amp; Explore</a> / Quechee State Park Map</div>
+<h1>Quechee State Park Map</h1><p>Find your way around the park, the Gorge and the Hartford area.</p></div></section>
+<section id="explore-map"><div class="wrap">
+  <div class="mapbar"><div><p class="eyebrow">Quechee State Park Map</p><h2>Find your way around</h2></div>
+  <div class="toolbar" id="mt"><button class="chip on" data-t="park">State Park map</button><button class="chip" data-t="area">Interactive area map</button></div></div>
+  <div id="tab-park" class="parkmap">
+    <a href="img/quechee-state-park-map.png" target="_blank" rel="noopener"><img src="img/quechee-state-park-map.png" alt="Official Quechee State Park map showing campsites, cabins, restrooms, parking, the park office and foot trails toward Quechee Gorge"></a>
+    <p class="note">Official map from Vermont Forests, Parks &amp; Recreation. Tap the map to enlarge, or <a target="_blank" rel="noopener" href="https://vtstateparks.com/assets/pdf/quechee.pdf">open the PDF</a>. Intended for informational purposes only.</p>
+  </div>
+  <div id="tab-area" hidden>
+    <div class="toolbar" id="mf"><button class="chip on" data-c="all">All</button><button class="chip" data-c="see">See &amp; Do</button><button class="chip" data-c="info">Visitor info</button><button class="chip" data-c="park">Parking</button><button class="chip" data-c="trail">Trails</button><button class="chip" data-c="event">Event sites</button></div>
+    <div id="map" role="application" aria-label="Interactive map of Quechee Gorge and the Hartford area"></div>
+    <p class="note">Tap a pin or trail for details and directions; zoom out to see the rest of the Hartford area. Trail and parking data © OpenStreetMap contributors, shown for orientation only.</p>
+  </div>
+</div></section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="gorge-data.js"></script>
+<script src="app.js?v=31"></script>
+<script>
+const P=[
+ {n:'Hartford Area Chamber & Quechee Gorge Visitor Center',c:'info',ll:[43.63673,-72.40549],d:'5966 Woodstock Rd · Visitor Center daily 9–5 · 802.295.6852<br>Chamber Mon–Fri 10–4 · 802.295.7900'},
+ {n:'Quechee Gorge Bridge',c:'see',ll:[43.6374,-72.4086],d:'Look down into Vermont\'s deepest gorge.'},
+ {n:'Quechee State Park',c:'see',ll:[43.6393,-72.4098],d:'Camping, hiking and gorge access.'},
+ {n:'Quechee Village (Balloon Festival grounds)',c:'event',ll:[43.6467,-72.4197],d:'Home of the Quechee Balloon Festival. Location approximate.'},
+ {n:'Downtown White River Junction',c:'see',ll:[43.6505,-72.3309],d:'Historic downtown, shops, galleries and dining.'}
+];
+const map=L.map('map',{scrollWheelZoom:false}).setView([43.6405,-72.4075],14);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors'}).addTo(map);
+GORGE.parking.forEach(ll=>P.push({n:'Parking',c:'park',ll,d:'Free parking near the gorge.'}));
+const layer=L.layerGroup().addTo(map);
+function draw(c){layer.clearLayers();
+  P.filter(p=>c==='all'||p.c===c).forEach(p=>L.marker(p.ll).bindPopup(`<b>${p.n}</b><br>${p.d}<br><a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${p.ll}">Directions</a>`).addTo(layer));
+  if(c==='all'||c==='trail'){
+    GORGE.paths.forEach(g=>L.polyline(g,{color:'#2e7d32',weight:2,opacity:.6,dashArray:'4 4',interactive:false}).addTo(layer));
+    Object.entries(GORGE.trails).forEach(([n,ls])=>ls.forEach(g=>L.polyline(g,{color:'#2e7d32',weight:4,opacity:.9}).bindTooltip(n,{sticky:true}).bindPopup(`<b>${n}</b>`).addTo(layer)))}}
+draw('all');
+mt.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;[...mt.children].forEach(x=>x.classList.toggle('on',x===b));document.getElementById('tab-park').hidden=b.dataset.t!=='park';document.getElementById('tab-area').hidden=b.dataset.t!=='area';if(b.dataset.t==='area')map.invalidateSize()};
+mf.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;[...mf.children].forEach(x=>x.classList.toggle('on',x===b));draw(b.dataset.c)};
+</script></body></html>
